@@ -1,0 +1,21 @@
+# started on Wed Jun 24 09:31:17 2026
+
+
+ Performance counter stats for '../muDock/build/application/muDock --protein /home/olly/UNI/progetto_aca/muDock/data/1fkb/1fkb_protein.pdb --ligand /home/olly/UNI/progetto_aca/muDock/data/1fkb/1fkb_ligand.adtmol2 --use CPP:CPU:0 --population 100 --generations 100' (3 runs):
+
+    44,829,520,814      L1-dcache-loads                                                         ( +-  0.08% )  (59.95%)
+     2,473,613,897      L1-dcache-load-misses            #    5.52% of all L1-dcache accesses   ( +-  0.13% )  (59.96%)
+        63,615,676      L1-icache-loads                                                         ( +-  2.88% )  (59.98%)
+         3,654,886      L1-icache-load-misses            #    5.75% of all L1-icache accesses   ( +-  4.33% )  (60.02%)
+     4,164,858,361      cache-references                                                        ( +-  0.78% )  (60.06%)
+         7,547,619      cache-misses                     #    0.18% of all cache refs           ( +- 11.48% )  (60.10%)
+       380,131,839      dTLB-loads                                                              ( +-  9.06% )  (60.10%)
+           910,748      dTLB-load-misses                 #    0.24% of all dTLB cache accesses  ( +-  9.89% )  (60.05%)
+           320,004      iTLB-loads                                                              ( +- 61.45% )  (59.99%)
+            17,605      iTLB-load-misses                 #    5.50% of all iTLB cache accesses  ( +-  8.99% )  (59.97%)
+            55,849      page-faults                                                             ( +-  0.00% )
+                 0      major-faults                                                          
+            55,849      minor-faults                                                            ( +-  0.00% )
+
+            2.5937 +- 0.0239 seconds time elapsed  ( +-  0.92% )
+

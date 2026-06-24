@@ -1,0 +1,66 @@
++===================================================================+
+|                   CPU METRICS REPORT                            |
++===================================================================╣
+|  Eseguibile: ../muDock/build/application/muDock                   |
+|  Data:       2026-06-24 09:27:15                                  |
+|  Repeat:     3  (warmup: 2)                                       |
++===================================================================╣
+|                                                                  |
+|   EXECUTION TIME                                                |
+|    Elapsed time          : 2.54671 s                                |
+|    CPUs utilized         : 12.900                                   |
+|                                                                  |
+|   INSTRUCTION-LEVEL PARALLELISM                                 |
+|    IPC  (Instructions/Cycle)  : 2.202                             |
+|    Cycles                     : 105,150,724,016                   |
+|    Instructions               : 231,536,523,852                   |
+|                                                                  |
+|   BRANCH PREDICTION                                             |
+|    Branch instructions        : 19,055,533,977                    |
+|    Branch mispredictions      : 53,586,065                        |
+|    Branch miss rate           : 0.28%                             |
+|                                                                  |
+|   PIPELINE STALLS                                               |
+|    Frontend stalled cycles    : 1,740,596,686                     |
+|    Frontend stall rate        : 1.66%                             |
+|    Backend stalled cycles     : 0                                 |
+|    Backend stall rate         : 0.00%                             |
+|                                                                  |
+|   LLC (Last Level Cache)                                        |
+|    LLC references             : 4,151,950,470                     |
+|    LLC misses (-> RAM)        : 7,026,537                         |
+|    LLC miss rate              : 0.17%                             |
+|                                                                  |
+|   OS / SCHEDULING                                               |
+|    Context switches           : 1,857                             |
+|    CPU migrations             : 50                                |
+|    Page faults                : 55,855                            |
+|                                                                  |
++===================================================================╣
++===================================================================╣
+|  RAW perf stat (totali) → cpu_metrics_raw.txt                   |
++===================================================================+
+
+=================== RAW PERF STAT OUTPUT (TOTALI) ==================
+
+# started on Wed Jun 24 09:27:08 2026
+
+
+ Performance counter stats for '../muDock/build/application/muDock --protein /home/olly/UNI/progetto_aca/muDock/data/1fkb/1fkb_protein.pdb --ligand /home/olly/UNI/progetto_aca/muDock/data/1fkb/1fkb_ligand.adtmol2 --use CPP:CPU:0 --population 100 --generations 100' (3 runs):
+
+         32,852.07 msec task-clock                       #   12.900 CPUs utilized               ( +-  0.34% )
+   105,150,724,016      cycles                           #    3.201 GHz                         ( +-  0.14% )  (85.73%)
+   231,536,523,852      instructions                     #    2.20  insn per cycle            
+                                                  #    0.01  stalled cycles per insn     ( +-  0.00% )  (85.72%)
+    19,055,533,977      branches                         #  580.041 M/sec                       ( +-  0.02% )  (85.69%)
+        53,586,065      branch-misses                    #    0.28% of all branches             ( +- 16.36% )  (85.70%)
+     1,740,596,686      stalled-cycles-frontend          #    1.66% frontend cycles idle        ( +-  7.16% )  (85.71%)
+   <not supported>      stalled-cycles-backend                                                
+     4,151,950,470      cache-references                 #  126.383 M/sec                       ( +-  0.40% )  (85.72%)
+         7,026,537      cache-misses                     #    0.17% of all cache refs           ( +-  5.34% )  (85.73%)
+             1,857      context-switches                 #   56.526 /sec                        ( +-  1.24% )
+                50      cpu-migrations                   #    1.522 /sec                        ( +-  0.67% )
+            55,855      page-faults                      #    1.700 K/sec                       ( +-  0.01% )
+
+           2.54671 +- 0.00241 seconds time elapsed  ( +-  0.09% )
+

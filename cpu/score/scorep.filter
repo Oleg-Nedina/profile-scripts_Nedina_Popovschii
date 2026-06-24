@@ -1,0 +1,10 @@
+SCOREP_REGION_NAMES_BEGIN
+    INCLUDE
+        *genetic*
+        *evaluate*
+        *mutate*
+        *calc_energy*
+        *prepare*
+        *virtual_screen*
+    EXCLUDE *
+SCOREP_REGION_NAMES_END

@@ -1,0 +1,93 @@
+================================================================================
+       REPORT METRICHE HARDWARE PAPI — KERNEL-LEVEL PROFILING
+================================================================================
+  Hardware : AMD Ryzen AI 7 PRO 350 w/ Radeon 860M
+  PAPI     : 7.2.0
+  Preset   : Cache Hierarchy & Data Locality
+  Contatori: PAPI_TOT_CYC, PAPI_TOT_INS, PAPI_L1_DCM, PAPI_L2_DCM, PAPI_L2_TCM, PAPI_TLB_DM
+================================================================================
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  KERNEL 6: Kernel-6                                                          │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  1. SEZIONE GLOBALE (Aggregata per tutti i thread)                           │
+│      Invocazioni:                                    90                      │
+│      Tempo totale (ms):                            762.85                    │
+│      Thread partecipanti:                             4                      │
+│                                                                              │
+│  Contatori Hardware (Grezzi):                                                │
+│      PAPI_TOT_CYC:                                             2'554'208'461 │
+│      PAPI_TOT_INS:                                             8'341'972'246 │
+│      PAPI_L1_DCM:                                                 30'085'194 │
+│      PAPI_L2_DCM:                                                    257'692 │
+│      PAPI_L2_TCM:                                                    269'280 │
+│      PAPI_TLB_DM:                                                  5'415'924 │
+│                                                                              │
+│  Metriche Derivate:                                                          │
+│      IPC (Ins/Ciclo)                : 3.266         ✓ buono                  │
+│      L1 MPKI (miss/KIns)            : 3.606         ✓ basso                  │
+│      L2 MPKI (miss/KIns)            : 0.031         ✓ basso                  │
+│      TLB-D MPKI (miss/KIns)         : 0.649         ✓ bassa                  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  2. SOTTOSEZIONE PER THREAD (Dettaglio per singolo thread)                   │
+│  Thread TID 161995                                                           │
+│      Invocazioni: 22              Tempo (ms): 187.41                          │
+│      Contatori Hardware (Grezzi):                                            │
+│          PAPI_TOT_CYC:                                           622'188'044 │
+│          PAPI_TOT_INS:                                         2'039'148'639 │
+│          PAPI_L1_DCM:                                              7'344'530 │
+│          PAPI_L2_DCM:                                                 55'997 │
+│          PAPI_L2_TCM:                                                 58'548 │
+│          PAPI_TLB_DM:                                              1'324'533 │
+│      Metriche Derivate:                                                      │
+│          IPC (Ins/Ciclo)                : 3.277         ✓ buono              │
+│          L1 MPKI (miss/KIns)            : 3.602         ✓ basso              │
+│          L2 MPKI (miss/KIns)            : 0.027         ✓ basso              │
+│          TLB-D MPKI (miss/KIns)         : 0.650         ✓ bassa              │
+│  --------------------------------------------------------------------------  │
+│  Thread TID 161993                                                           │
+│      Invocazioni: 22              Tempo (ms): 190.23                          │
+│      Contatori Hardware (Grezzi):                                            │
+│          PAPI_TOT_CYC:                                           626'768'593 │
+│          PAPI_TOT_INS:                                         2'039'148'703 │
+│          PAPI_L1_DCM:                                              7'375'491 │
+│          PAPI_L2_DCM:                                                 99'031 │
+│          PAPI_L2_TCM:                                                103'739 │
+│          PAPI_TLB_DM:                                              1'323'917 │
+│      Metriche Derivate:                                                      │
+│          IPC (Ins/Ciclo)                : 3.253         ✓ buono              │
+│          L1 MPKI (miss/KIns)            : 3.617         ✓ basso              │
+│          L2 MPKI (miss/KIns)            : 0.049         ✓ basso              │
+│          TLB-D MPKI (miss/KIns)         : 0.649         ✓ bassa              │
+│  --------------------------------------------------------------------------  │
+│  Thread TID 161992                                                           │
+│      Invocazioni: 23              Tempo (ms): 192.14                          │
+│      Contatori Hardware (Grezzi):                                            │
+│          PAPI_TOT_CYC:                                           651'700'896 │
+│          PAPI_TOT_INS:                                         2'131'837'442 │
+│          PAPI_L1_DCM:                                              7'680'116 │
+│          PAPI_L2_DCM:                                                 43'676 │
+│          PAPI_L2_TCM:                                                 45'557 │
+│          PAPI_TLB_DM:                                              1'383'758 │
+│      Metriche Derivate:                                                      │
+│          IPC (Ins/Ciclo)                : 3.271         ✓ buono              │
+│          L1 MPKI (miss/KIns)            : 3.603         ✓ basso              │
+│          L2 MPKI (miss/KIns)            : 0.020         ✓ basso              │
+│          TLB-D MPKI (miss/KIns)         : 0.649         ✓ bassa              │
+│  --------------------------------------------------------------------------  │
+│  Thread TID 161994                                                           │
+│      Invocazioni: 23              Tempo (ms): 193.06                          │
+│      Contatori Hardware (Grezzi):                                            │
+│          PAPI_TOT_CYC:                                           653'550'928 │
+│          PAPI_TOT_INS:                                         2'131'837'462 │
+│          PAPI_L1_DCM:                                              7'685'057 │
+│          PAPI_L2_DCM:                                                 58'988 │
+│          PAPI_L2_TCM:                                                 61'436 │
+│          PAPI_TLB_DM:                                              1'383'716 │
+│      Metriche Derivate:                                                      │
+│          IPC (Ins/Ciclo)                : 3.262         ✓ buono              │
+│          L1 MPKI (miss/KIns)            : 3.605         ✓ basso              │
+│          L2 MPKI (miss/KIns)            : 0.028         ✓ basso              │
+│          TLB-D MPKI (miss/KIns)         : 0.649         ✓ bassa              │
+└──────────────────────────────────────────────────────────────────────────────┘
+

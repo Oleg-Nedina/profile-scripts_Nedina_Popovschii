@@ -1,0 +1,107 @@
+version: 0
+inputs:
+  - &PAPI_TLB_DM-sum-x5b_0x0x5d_-execution
+    metric: PAPI_TLB_DM
+    scope: execution
+    formula: $$
+    combine: sum
+  - &PAPI_TLB_DM-sum-x5b_0x0x5d_-lex_aware
+    metric: PAPI_TLB_DM
+    scope: lex_aware
+    formula: $$
+    combine: sum
+  - &PAPI_TLB_DM-sum-x5b_0x0x5d_-function
+    metric: PAPI_TLB_DM
+    scope: function
+    formula: $$
+    combine: sum
+  - &PAPI_L2_DCM-sum-x5b_0x0x5d_-execution
+    metric: PAPI_L2_DCM
+    scope: execution
+    formula: $$
+    combine: sum
+  - &PAPI_L2_DCM-sum-x5b_0x0x5d_-lex_aware
+    metric: PAPI_L2_DCM
+    scope: lex_aware
+    formula: $$
+    combine: sum
+  - &PAPI_L2_DCM-sum-x5b_0x0x5d_-function
+    metric: PAPI_L2_DCM
+    scope: function
+    formula: $$
+    combine: sum
+  - &PAPI_L1_DCM-sum-x5b_0x0x5d_-execution
+    metric: PAPI_L1_DCM
+    scope: execution
+    formula: $$
+    combine: sum
+  - &PAPI_L1_DCM-sum-x5b_0x0x5d_-lex_aware
+    metric: PAPI_L1_DCM
+    scope: lex_aware
+    formula: $$
+    combine: sum
+  - &PAPI_L1_DCM-sum-x5b_0x0x5d_-function
+    metric: PAPI_L1_DCM
+    scope: function
+    formula: $$
+    combine: sum
+  - &cycles-sum-x5b_0x0x5d_-execution
+    metric: cycles
+    scope: execution
+    formula: $$
+    combine: sum
+  - &cycles-sum-x5b_0x0x5d_-lex_aware
+    metric: cycles
+    scope: lex_aware
+    formula: $$
+    combine: sum
+  - &cycles-sum-x5b_0x0x5d_-function
+    metric: cycles
+    scope: function
+    formula: $$
+    combine: sum
+roots:
+  - name: cycles
+    description: PERF_COUNT_HW_CPU_CYCLES
+    variants:
+      Sum:
+        render: [number, percent]
+        formula:
+          inclusive:
+            standard: *cycles-sum-x5b_0x0x5d_-execution
+          exclusive:
+            custom: *cycles-sum-x5b_0x0x5d_-lex_aware
+            standard: *cycles-sum-x5b_0x0x5d_-function
+  - name: PAPI_L1_DCM
+    description: PAPI_L1_DCM
+    variants:
+      Sum:
+        render: [number, percent]
+        formula:
+          inclusive:
+            standard: *PAPI_L1_DCM-sum-x5b_0x0x5d_-execution
+          exclusive:
+            custom: *PAPI_L1_DCM-sum-x5b_0x0x5d_-lex_aware
+            standard: *PAPI_L1_DCM-sum-x5b_0x0x5d_-function
+  - name: PAPI_L2_DCM
+    description: PAPI_L2_DCM
+    variants:
+      Sum:
+        render: [number, percent]
+        formula:
+          inclusive:
+            standard: *PAPI_L2_DCM-sum-x5b_0x0x5d_-execution
+          exclusive:
+            custom: *PAPI_L2_DCM-sum-x5b_0x0x5d_-lex_aware
+            standard: *PAPI_L2_DCM-sum-x5b_0x0x5d_-function
+  - name: PAPI_TLB_DM
+    description: PAPI_TLB_DM
+    variants:
+      Sum:
+        render: [number, percent]
+        formula:
+          inclusive:
+            standard: *PAPI_TLB_DM-sum-x5b_0x0x5d_-execution
+          exclusive:
+            custom: *PAPI_TLB_DM-sum-x5b_0x0x5d_-lex_aware
+            standard: *PAPI_TLB_DM-sum-x5b_0x0x5d_-function

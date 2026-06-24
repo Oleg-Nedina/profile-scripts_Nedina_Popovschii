@@ -1,0 +1,70 @@
++===================================================================+
+|                 MEMORY METRICS REPORT                           |
++===================================================================╣
+|  Eseguibile: ../muDock/build/application/muDock                   |
+|  Data:       2026-06-24 09:31:25                                  |
+|  Elapsed:    2.5937 s                                             |
+|  Repeat:     3  (warmup: 2)                                       |
++===================================================================╣
+|                                                                  |
+|   L1 DATA CACHE (L1-D)                                         |
+|    Loads totali     : 44829.52 M (44,829,520,814)                  |
+|    Misses           : 2473.61 M (2,473,613,897)                    |
+|    Miss rate        : 5.518%                                       |
+|    Hit rate         : 94.482%                                      |
+|                                                                  |
+|   L1 INSTRUCTION CACHE (L1-I)                                  |
+|    Loads totali     : 63.62 M (63,615,676)                         |
+|    Misses           : 3.65 M (3,654,886)                           |
+|    Miss rate        : 5.745%                                       |
+|    Hit rate         : 94.255%                                      |
+|                                                                  |
+|   LAST LEVEL CACHE (LLC / L3)                                  |
+|    References totali: 4164.86 M (4,164,858,361)                    |
+|    Misses (→ RAM)   : 7.55 M (7,547,619)                           |
+|    Miss rate        : 0.181%                                       |
+|    Hit rate         : 99.819%                                      |
+|    MPKI (LLC miss/KI): 0.03                                        |
+|                                                                  |
+|   dTLB (Data Translation Lookaside Buffer)                     |
+|    Loads totali     : 380.13 M (380,131,839)                       |
+|    Misses           : 0.91 M (910,748)                             |
+|    Miss rate        : 0.240%                                       |
+|                                                                  |
+|   iTLB (Instruction TLB)                                       |
+|    Loads totali     : 0.32 M (320,004)                             |
+|    Misses           : 0.02 M (17,605)                              |
+|    Miss rate        : 5.501%                                       |
+|                                                                  |
+|   PAGE FAULTS                                                   |
+|    Totali           : 55,849                                       |
+|    Major (disk I/O) : 0                                            |
+|    Minor (anon/CoW) : 55,849                                       |
+|                                                                  |
++===================================================================╣
+|  RAW perf stat (totali) → memory_metrics_raw.txt                |
++===================================================================+
+
+=================== RAW PERF STAT OUTPUT (TOTALI) ==================
+
+# started on Wed Jun 24 09:31:17 2026
+
+
+ Performance counter stats for '../muDock/build/application/muDock --protein /home/olly/UNI/progetto_aca/muDock/data/1fkb/1fkb_protein.pdb --ligand /home/olly/UNI/progetto_aca/muDock/data/1fkb/1fkb_ligand.adtmol2 --use CPP:CPU:0 --population 100 --generations 100' (3 runs):
+
+    44,829,520,814      L1-dcache-loads                                                         ( +-  0.08% )  (59.95%)
+     2,473,613,897      L1-dcache-load-misses            #    5.52% of all L1-dcache accesses   ( +-  0.13% )  (59.96%)
+        63,615,676      L1-icache-loads                                                         ( +-  2.88% )  (59.98%)
+         3,654,886      L1-icache-load-misses            #    5.75% of all L1-icache accesses   ( +-  4.33% )  (60.02%)
+     4,164,858,361      cache-references                                                        ( +-  0.78% )  (60.06%)
+         7,547,619      cache-misses                     #    0.18% of all cache refs           ( +- 11.48% )  (60.10%)
+       380,131,839      dTLB-loads                                                              ( +-  9.06% )  (60.10%)
+           910,748      dTLB-load-misses                 #    0.24% of all dTLB cache accesses  ( +-  9.89% )  (60.05%)
+           320,004      iTLB-loads                                                              ( +- 61.45% )  (59.99%)
+            17,605      iTLB-load-misses                 #    5.50% of all iTLB cache accesses  ( +-  8.99% )  (59.97%)
+            55,849      page-faults                                                             ( +-  0.00% )
+                 0      major-faults                                                          
+            55,849      minor-faults                                                            ( +-  0.00% )
+
+            2.5937 +- 0.0239 seconds time elapsed  ( +-  0.92% )
+

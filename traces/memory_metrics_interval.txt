@@ -1,0 +1,81 @@
+# started on Wed Jun 24 09:31:14 2026
+
+#           time             counts unit events
+     0.501493474      7,975,293,907      L1-dcache-loads                                                         (60.29%)
+     0.501493474        444,944,151      L1-dcache-load-misses            #    5.58% of all L1-dcache accesses   (60.06%)
+     0.501493474         19,298,280      L1-icache-loads                                                         (59.88%)
+     0.501493474          1,119,323      L1-icache-load-misses            #    5.80% of all L1-icache accesses   (59.67%)
+     0.501493474        738,436,586      cache-references                                                        (59.65%)
+     0.501493474          2,861,703      cache-misses                     #    0.39% of all cache refs           (59.69%)
+     0.501493474         69,830,030      dTLB-loads                                                              (59.87%)
+     0.501493474            346,236      dTLB-load-misses                 #    0.50% of all dTLB cache accesses  (60.10%)
+     0.501493474            404,590      iTLB-loads                                                              (60.29%)
+     0.501493474              4,661      iTLB-load-misses                 #    1.15% of all iTLB cache accesses  (60.47%)
+     0.501493474             30,979      page-faults                                                           
+     0.501493474                  0      major-faults                                                          
+     0.501493474             30,979      minor-faults                                                          
+     1.002389670      9,511,543,004      L1-dcache-loads                                                         (59.99%)
+     1.002389670        582,934,202      L1-dcache-load-misses            #    6.13% of all L1-dcache accesses   (60.03%)
+     1.002389670          8,465,042      L1-icache-loads                                                         (60.02%)
+     1.002389670            512,629      L1-icache-load-misses            #    6.06% of all L1-icache accesses   (60.04%)
+     1.002389670        961,064,279      cache-references                                                        (60.06%)
+     1.002389670            717,950      cache-misses                     #    0.07% of all cache refs           (60.10%)
+     1.002389670         87,506,264      dTLB-loads                                                              (60.01%)
+     1.002389670            114,344      dTLB-load-misses                 #    0.13% of all dTLB cache accesses  (59.96%)
+     1.002389670             15,638      iTLB-loads                                                              (59.92%)
+     1.002389670              2,993      iTLB-load-misses                 #   19.14% of all iTLB cache accesses  (59.87%)
+     1.002389670                  0      page-faults                                                           
+     1.002389670                  0      major-faults                                                          
+     1.002389670                  0      minor-faults                                                          
+     1.503210764      9,377,187,362      L1-dcache-loads                                                         (59.97%)
+     1.503210764        583,450,514      L1-dcache-load-misses            #    6.22% of all L1-dcache accesses   (59.99%)
+     1.503210764          8,700,074      L1-icache-loads                                                         (60.01%)
+     1.503210764            523,371      L1-icache-load-misses            #    6.02% of all L1-icache accesses   (60.00%)
+     1.503210764        977,527,329      cache-references                                                        (60.00%)
+     1.503210764          1,179,573      cache-misses                     #    0.12% of all cache refs           (60.01%)
+     1.503210764         93,422,738      dTLB-loads                                                              (60.02%)
+     1.503210764            140,039      dTLB-load-misses                 #    0.15% of all dTLB cache accesses  (59.99%)
+     1.503210764             22,145      iTLB-loads                                                              (60.00%)
+     1.503210764              3,404      iTLB-load-misses                 #   15.37% of all iTLB cache accesses  (60.00%)
+     1.503210764                  0      page-faults                                                           
+     1.503210764                  0      major-faults                                                          
+     1.503210764                  0      minor-faults                                                          
+     2.005004726      9,427,678,823      L1-dcache-loads                                                         (60.05%)
+     2.005004726        570,575,945      L1-dcache-load-misses            #    6.05% of all L1-dcache accesses   (60.00%)
+     2.005004726          8,664,638      L1-icache-loads                                                         (59.94%)
+     2.005004726            513,832      L1-icache-load-misses            #    5.93% of all L1-icache accesses   (59.91%)
+     2.005004726        960,443,170      cache-references                                                        (59.91%)
+     2.005004726            910,190      cache-misses                     #    0.09% of all cache refs           (59.96%)
+     2.005004726         92,461,059      dTLB-loads                                                              (60.00%)
+     2.005004726            130,633      dTLB-load-misses                 #    0.14% of all dTLB cache accesses  (60.04%)
+     2.005004726             13,015      iTLB-loads                                                              (60.08%)
+     2.005004726              2,967      iTLB-load-misses                 #   22.80% of all iTLB cache accesses  (60.09%)
+     2.005004726                  0      page-faults                                                           
+     2.005004726                  0      major-faults                                                          
+     2.005004726                  0      minor-faults                                                          
+     2.505492300      8,148,543,444      L1-dcache-loads                                                         (59.97%)
+     2.505492300        301,524,147      L1-dcache-load-misses            #    3.70% of all L1-dcache accesses   (59.94%)
+     2.505492300          6,150,933      L1-icache-loads                                                         (59.92%)
+     2.505492300            444,984      L1-icache-load-misses            #    7.23% of all L1-icache accesses   (59.94%)
+     2.505492300        554,900,472      cache-references                                                        (59.99%)
+     2.505492300            535,447      cache-misses                     #    0.10% of all cache refs           (60.03%)
+     2.505492300         57,254,997      dTLB-loads                                                              (60.09%)
+     2.505492300             20,095      dTLB-load-misses                 #    0.04% of all dTLB cache accesses  (60.08%)
+     2.505492300             14,743      iTLB-loads                                                              (60.04%)
+     2.505492300                211      iTLB-load-misses                 #    1.43% of all iTLB cache accesses  (60.01%)
+     2.505492300                  0      page-faults                                                           
+     2.505492300                  0      major-faults                                                          
+     2.505492300                  0      minor-faults                                                          
+     2.592895496        321,784,511      L1-dcache-loads                                                         (61.28%)
+     2.592895496          9,728,103      L1-dcache-load-misses            #    3.02% of all L1-dcache accesses   (64.19%)
+     2.592895496          9,405,014      L1-icache-loads                                                         (67.92%)
+     2.592895496            521,602      L1-icache-load-misses            #    5.55% of all L1-icache accesses   (69.23%)
+     2.592895496         26,458,350      cache-references                                                        (65.06%)
+     2.592895496          1,219,310      cache-misses                     #    4.61% of all cache refs           (62.13%)
+     2.592895496          1,607,133      dTLB-loads                                                              (60.69%)
+     2.592895496            198,501      dTLB-load-misses                 #   12.35% of all dTLB cache accesses  (59.11%)
+     2.592895496            434,467      iTLB-loads                                                              (58.29%)
+     2.592895496              6,719      iTLB-load-misses                 #    1.55% of all iTLB cache accesses  (59.61%)
+     2.592895496             24,882      page-faults                                                           
+     2.592895496                  0      major-faults                                                          
+     2.592895496             24,882      minor-faults                                                          

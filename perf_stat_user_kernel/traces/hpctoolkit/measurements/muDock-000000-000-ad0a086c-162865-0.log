@@ -1,0 +1,55 @@
+[162865, 6]: -- begin new backtrace (innermost first) [PARTIAL] ----------
+[162865, 6]: ip = 0x7bba7e1414c0 (0x2c4c0), load module = /home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+[162865, 6]: ip = 0x7bba7da4532f (0x4532f), load module = /usr/lib/x86_64-linux-gnu/libc.so.6
+[162865, 6]: -- end backtrace ------------------------------------
+
+[162865, 0]: -- begin new backtrace (innermost first) [PARTIAL] ----------
+[162865, 0]: ip = 0x7bba7e1620b3 (0x4d0b3), load module = /home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+[162865, 0]: ip = 0x7bba7e170bb7 (0x5bbb7), load module = /home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+[162865, 0]: ip = 0x7bba7e141537 (0x2c537), load module = /home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+[162865, 0]: ip = 0x7bba7ec4532f (0x2a556e6e6f726d20), load module = (null)
+[162865, 0]: -- end backtrace ------------------------------------
+
+[162865, 0]: -- begin new backtrace (innermost first) [PARTIAL] ----------
+[162865, 0]: ip = 0x7bba7daa1fc4 (0xa1fc4), load module = /usr/lib/x86_64-linux-gnu/libc.so.6
+[162865, 0]: ip = 0x7bba7e137a8a (0x22a8a), load module = /home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+[162865, 0]: ip = 0x7bba7e17465e (0x5f65e), load module = /home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+[162865, 0]: ip = 0x7bba7e9bfec2 (0x1aec2), load module = /home/olly/spack/opt/spack/linux-zen5/papi-7.2.0-phjflxwdo3jiguixa6ltrkwmaadrgujj/lib/libpapi.so.7.2.0.0
+[162865, 0]: ip = 0x7bba7e9d0097 (0x2b097), load module = /home/olly/spack/opt/spack/linux-zen5/papi-7.2.0-phjflxwdo3jiguixa6ltrkwmaadrgujj/lib/libpapi.so.7.2.0.0
+[162865, 0]: ip = 0x7bba7da4532f (0x4532f), load module = /usr/lib/x86_64-linux-gnu/libc.so.6
+[162865, 0]: -- end backtrace ------------------------------------
+
+[162865, 9]: -- begin new backtrace (innermost first) [PARTIAL] ----------
+[162865, 9]: ip = 0x7bba7db24e1d (0x124e1d), load module = /usr/lib/x86_64-linux-gnu/libc.so.6
+[162865, 9]: ip = 0x7bba7e9cffe3 (0x2afe3), load module = /home/olly/spack/opt/spack/linux-zen5/papi-7.2.0-phjflxwdo3jiguixa6ltrkwmaadrgujj/lib/libpapi.so.7.2.0.0
+[162865, 9]: ip = 0x7bba7da4532f (0x4532f), load module = /usr/lib/x86_64-linux-gnu/libc.so.6
+[162865, 9]: -- end backtrace ------------------------------------
+
+[162865, 20]: -- begin new backtrace (innermost first) [PARTIAL] ----------
+[162865, 20]: ip = 0x7bba7db24e1d (0x124e1d), load module = /usr/lib/x86_64-linux-gnu/libc.so.6
+[162865, 20]: ip = 0x7bba7e9cffe3 (0x2afe3), load module = /home/olly/spack/opt/spack/linux-zen5/papi-7.2.0-phjflxwdo3jiguixa6ltrkwmaadrgujj/lib/libpapi.so.7.2.0.0
+[162865, 20]: ip = 0x7bba7da4532f (0x4532f), load module = /usr/lib/x86_64-linux-gnu/libc.so.6
+[162865, 20]: -- end backtrace ------------------------------------
+
+[162865, 20]: -- begin new backtrace (innermost first) [PARTIAL] ----------
+[162865, 20]: ip = 0x7bba7e1414c0 (0x2c4c0), load module = /home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+[162865, 20]: ip = 0x7bba7da4532f (0x4532f), load module = /usr/lib/x86_64-linux-gnu/libc.so.6
+[162865, 20]: -- end backtrace ------------------------------------
+
+[162865, 18]: -- begin new backtrace (innermost first) [PARTIAL] ----------
+[162865, 18]: ip = 0x7bba7da2a6e0 (0x2a6e0), load module = /usr/lib/x86_64-linux-gnu/libc.so.6
+[162865, 18]: ip = 0x7bba7e170ba4 (0x5bba4), load module = /home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+[162865, 18]: ip = 0x7bba7e141537 (0x2c537), load module = /home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+[162865, 18]: ip = 0x7bba7ec4532f (0x2a556e6e6f726d20), load module = (null)
+[162865, 18]: -- end backtrace ------------------------------------
+
+MEMORY: segment size: 4.0 meg, num segments: 124, total allocation: 496.0 meg, reclaims: 0
+MEMORY: total freeable: 0.0 meg, total non-freeable: 150.3 meg, malloc failures: 0
+UNWIND ANOMALIES: total: 38212 errant: 7, total-frames: 205898, total-libunwind-fails: 0
+ACC SUMMARY:
+         accelerator trace records: 0 (processed: 0, dropped: 0)
+         accelerator samples: 0 (recorded: 0, dropped: 0)
+SAMPLE ANOMALIES: blocks: 76 (async: 76, dlopen: 0), errors: 7 (segv: 0, soft: 7)
+SUMMARY: samples: 38212 (recorded: 38136, blocked: 76, errant: 7, trolled: 0, yielded: 0),
+         frames: 205898 (trolled: 0)
+         intervals: 2608 (suspicious: 0)

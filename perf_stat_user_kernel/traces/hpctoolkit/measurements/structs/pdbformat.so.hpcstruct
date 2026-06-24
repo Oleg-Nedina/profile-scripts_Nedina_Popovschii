@@ -1,0 +1,936 @@
+<?xml version="1.0"?>
+<!DOCTYPE HPCToolkitStructure [
+<!-- SPDX-SnippetBegin -->
+<!--
+SPDX-FileCopyrightText: Contributors to the HPCToolkit Project
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
+<!-- ******************************************************************** -->
+<!-- HPCToolkit Structure DTD                                             -->
+<!-- Version 4.9                                                          -->
+<!-- ******************************************************************** -->
+
+<!ELEMENT HPCToolkitStructure (LM)*>
+<!ATTLIST HPCToolkitStructure
+        version CDATA #REQUIRED
+        i       CDATA #REQUIRED
+        n       CDATA #IMPLIED>
+  <!-- Load module: -->
+  <!--   (i)d: unique identifier for cross referencing -->
+  <!--   (n)ame -->
+  <!--   (l)ine range: "beg-end" (inclusive range) -->
+  <!--   (v)ma-range-set: "{[beg-end), [beg-end)...}" -->
+  <!--   (t)arget: target function address -->
+  <!--   (d)evice: device name -->
+  <!ELEMENT LM (F|P)*>
+  <!ATTLIST LM
+        i CDATA #REQUIRED
+        n CDATA #REQUIRED
+        has-calls CDATA #REQUIRED
+        v CDATA #IMPLIED>
+  <!-- File: -->
+  <!ELEMENT F (P|L|S)*>
+  <!ATTLIST F
+        i CDATA #REQUIRED
+        n CDATA #REQUIRED>
+  <!-- Procedure: ln=link name (if different than name) -->
+  <!ELEMENT P (P|A|L|S|C)*>
+  <!ATTLIST P
+        i  CDATA #REQUIRED
+        n  CDATA #REQUIRED
+        ln CDATA #IMPLIED
+        l  CDATA #IMPLIED
+        s  CDATA #IMPLIED
+        v  CDATA #IMPLIED>
+  <!-- Alien: (f)ilename -->
+  <!ELEMENT A (A|L|S|C)*>
+  <!ATTLIST A
+        i CDATA #REQUIRED
+        f CDATA #IMPLIED
+        n CDATA #IMPLIED
+        ln CDATA #IMPLIED
+        l CDATA #IMPLIED
+        v CDATA #IMPLIED>
+  <!-- Loop -->
+  <!ELEMENT L (A|L|S|C)*>
+  <!ATTLIST L
+        i CDATA #REQUIRED
+        l CDATA #REQUIRED
+        f CDATA #IMPLIED
+        v CDATA #IMPLIED>
+  <!-- Statement -->
+  <!ELEMENT S EMPTY>
+  <!ATTLIST S
+        i CDATA #REQUIRED
+        l CDATA #REQUIRED
+        v CDATA #IMPLIED>
+  <!-- Callsite (a special Statement) -->
+  <!ELEMENT C (C)*>
+  <!ATTLIST C
+        i CDATA #REQUIRED
+        l CDATA #REQUIRED
+        v CDATA #IMPLIED
+        t CDATA #IMPLIED
+        d CDATA #IMPLIED>
+<!-- SPDX-SnippetEnd -->
+]>
+<HPCToolkitStructure i="0" version="4.9" n="">
+<LM i="2" n="/home/olly/spack/opt/spack/linux-zen5/openbabel-3.1.1-nkqmkmswwynl4ismnzgixnf6bgsglwbn/lib/openbabel/3.1.0/pdbformat.so" has-calls="0" v="{}">
+<F i="3" n="[pdbformat.so]">
+<P i="4" n="_init [pdbformat.so]" ln="_init" l="0" v="{[0x7000-0x7001)}">
+<S i="5" l="0" v="{[0x7000-0x701b)}"/>
+</P>
+<P i="6" n="targ78a0@plt [pdbformat.so]" ln="targ78a0@plt" l="0" v="{[0x78a0-0x78a1)}">
+<S i="7" l="0" v="{[0x78a0-0x78b0)}"/>
+</P>
+<P i="8" n="targ78b0@plt [pdbformat.so]" ln="targ78b0@plt" l="0" v="{[0x78b0-0x78b1)}">
+<S i="9" l="0" v="{[0x78b0-0x78c0)}"/>
+</P>
+<P i="10" n="targ78c0@plt [pdbformat.so]" ln="targ78c0@plt" l="0" v="{[0x78c0-0x78c1)}">
+<S i="11" l="0" v="{[0x78c0-0x78d0)}"/>
+</P>
+<P i="12" n="targ78d0@plt [pdbformat.so]" ln="targ78d0@plt" l="0" v="{[0x78d0-0x78d1)}">
+<S i="13" l="0" v="{[0x78d0-0x78e0)}"/>
+</P>
+<P i="14" n="targ78e0@plt [pdbformat.so]" ln="targ78e0@plt" l="0" v="{[0x78e0-0x78e1)}">
+<S i="15" l="0" v="{[0x78e0-0x78f0)}"/>
+</P>
+<P i="16" n="targ78f0@plt [pdbformat.so]" ln="targ78f0@plt" l="0" v="{[0x78f0-0x78f1)}">
+<S i="17" l="0" v="{[0x78f0-0x7900)}"/>
+</P>
+<P i="18" n="targ7900@plt [pdbformat.so]" ln="targ7900@plt" l="0" v="{[0x7900-0x7901)}">
+<S i="19" l="0" v="{[0x7900-0x7910)}"/>
+</P>
+<P i="20" n="targ7910@plt [pdbformat.so]" ln="targ7910@plt" l="0" v="{[0x7910-0x7911)}">
+<S i="21" l="0" v="{[0x7910-0x7920)}"/>
+</P>
+<P i="22" n="targ7920@plt [pdbformat.so]" ln="targ7920@plt" l="0" v="{[0x7920-0x7921)}">
+<S i="23" l="0" v="{[0x7920-0x7930)}"/>
+</P>
+<P i="24" n="targ7930@plt [pdbformat.so]" ln="targ7930@plt" l="0" v="{[0x7930-0x7931)}">
+<S i="25" l="0" v="{[0x7930-0x7940)}"/>
+</P>
+<P i="26" n="targ7940@plt [pdbformat.so]" ln="targ7940@plt" l="0" v="{[0x7940-0x7941)}">
+<S i="27" l="0" v="{[0x7940-0x7950)}"/>
+</P>
+<P i="28" n="targ7950@plt [pdbformat.so]" ln="targ7950@plt" l="0" v="{[0x7950-0x7951)}">
+<S i="29" l="0" v="{[0x7950-0x7960)}"/>
+</P>
+<P i="30" n="targ7960@plt [pdbformat.so]" ln="targ7960@plt" l="0" v="{[0x7960-0x7961)}">
+<S i="31" l="0" v="{[0x7960-0x7970)}"/>
+</P>
+<P i="32" n="targ7970@plt [pdbformat.so]" ln="targ7970@plt" l="0" v="{[0x7970-0x7971)}">
+<S i="33" l="0" v="{[0x7970-0x7980)}"/>
+</P>
+<P i="34" n="targ7980@plt [pdbformat.so]" ln="targ7980@plt" l="0" v="{[0x7980-0x7981)}">
+<S i="35" l="0" v="{[0x7980-0x7990)}"/>
+</P>
+<P i="36" n="targ7990@plt [pdbformat.so]" ln="targ7990@plt" l="0" v="{[0x7990-0x7991)}">
+<S i="37" l="0" v="{[0x7990-0x79a0)}"/>
+</P>
+<P i="38" n="targ79a0@plt [pdbformat.so]" ln="targ79a0@plt" l="0" v="{[0x79a0-0x79a1)}">
+<S i="39" l="0" v="{[0x79a0-0x79b0)}"/>
+</P>
+<P i="40" n="targ79b0@plt [pdbformat.so]" ln="targ79b0@plt" l="0" v="{[0x79b0-0x79b1)}">
+<S i="41" l="0" v="{[0x79b0-0x79c0)}"/>
+</P>
+<P i="42" n="targ79c0@plt [pdbformat.so]" ln="targ79c0@plt" l="0" v="{[0x79c0-0x79c1)}">
+<S i="43" l="0" v="{[0x79c0-0x79d0)}"/>
+</P>
+<P i="44" n="targ79d0@plt [pdbformat.so]" ln="targ79d0@plt" l="0" v="{[0x79d0-0x79d1)}">
+<S i="45" l="0" v="{[0x79d0-0x79e0)}"/>
+</P>
+<P i="46" n="targ79e0@plt [pdbformat.so]" ln="targ79e0@plt" l="0" v="{[0x79e0-0x79e1)}">
+<S i="47" l="0" v="{[0x79e0-0x79f0)}"/>
+</P>
+<P i="48" n="targ79f0@plt [pdbformat.so]" ln="targ79f0@plt" l="0" v="{[0x79f0-0x79f1)}">
+<S i="49" l="0" v="{[0x79f0-0x7a00)}"/>
+</P>
+<P i="50" n="targ7a00@plt [pdbformat.so]" ln="targ7a00@plt" l="0" v="{[0x7a00-0x7a01)}">
+<S i="51" l="0" v="{[0x7a00-0x7a10)}"/>
+</P>
+<P i="52" n="targ7a10@plt [pdbformat.so]" ln="targ7a10@plt" l="0" v="{[0x7a10-0x7a11)}">
+<S i="53" l="0" v="{[0x7a10-0x7a20)}"/>
+</P>
+<P i="54" n="targ7a20@plt [pdbformat.so]" ln="targ7a20@plt" l="0" v="{[0x7a20-0x7a21)}">
+<S i="55" l="0" v="{[0x7a20-0x7a30)}"/>
+</P>
+<P i="56" n="targ7a30@plt [pdbformat.so]" ln="targ7a30@plt" l="0" v="{[0x7a30-0x7a31)}">
+<S i="57" l="0" v="{[0x7a30-0x7a40)}"/>
+</P>
+<P i="58" n="targ7a40@plt [pdbformat.so]" ln="targ7a40@plt" l="0" v="{[0x7a40-0x7a41)}">
+<S i="59" l="0" v="{[0x7a40-0x7a50)}"/>
+</P>
+<P i="60" n="targ7a50@plt [pdbformat.so]" ln="targ7a50@plt" l="0" v="{[0x7a50-0x7a51)}">
+<S i="61" l="0" v="{[0x7a50-0x7a60)}"/>
+</P>
+<P i="62" n="targ7a60@plt [pdbformat.so]" ln="targ7a60@plt" l="0" v="{[0x7a60-0x7a61)}">
+<S i="63" l="0" v="{[0x7a60-0x7a70)}"/>
+</P>
+<P i="64" n="targ7a70@plt [pdbformat.so]" ln="targ7a70@plt" l="0" v="{[0x7a70-0x7a71)}">
+<S i="65" l="0" v="{[0x7a70-0x7a80)}"/>
+</P>
+<P i="66" n="targ7a80@plt [pdbformat.so]" ln="targ7a80@plt" l="0" v="{[0x7a80-0x7a81)}">
+<S i="67" l="0" v="{[0x7a80-0x7a90)}"/>
+</P>
+<P i="68" n="targ7a90@plt [pdbformat.so]" ln="targ7a90@plt" l="0" v="{[0x7a90-0x7a91)}">
+<S i="69" l="0" v="{[0x7a90-0x7aa0)}"/>
+</P>
+<P i="70" n="targ7aa0@plt [pdbformat.so]" ln="targ7aa0@plt" l="0" v="{[0x7aa0-0x7aa1)}">
+<S i="71" l="0" v="{[0x7aa0-0x7ab0)}"/>
+</P>
+<P i="72" n="targ7ab0@plt [pdbformat.so]" ln="targ7ab0@plt" l="0" v="{[0x7ab0-0x7ab1)}">
+<S i="73" l="0" v="{[0x7ab0-0x7ac0)}"/>
+</P>
+<P i="74" n="targ7ac0@plt [pdbformat.so]" ln="targ7ac0@plt" l="0" v="{[0x7ac0-0x7ac1)}">
+<S i="75" l="0" v="{[0x7ac0-0x7ad0)}"/>
+</P>
+<P i="76" n="targ7ad0@plt [pdbformat.so]" ln="targ7ad0@plt" l="0" v="{[0x7ad0-0x7ad1)}">
+<S i="77" l="0" v="{[0x7ad0-0x7ae0)}"/>
+</P>
+<P i="78" n="targ7ae0@plt [pdbformat.so]" ln="targ7ae0@plt" l="0" v="{[0x7ae0-0x7ae1)}">
+<S i="79" l="0" v="{[0x7ae0-0x7af0)}"/>
+</P>
+<P i="80" n="targ7af0@plt [pdbformat.so]" ln="targ7af0@plt" l="0" v="{[0x7af0-0x7af1)}">
+<S i="81" l="0" v="{[0x7af0-0x7b00)}"/>
+</P>
+<P i="82" n="targ7b00@plt [pdbformat.so]" ln="targ7b00@plt" l="0" v="{[0x7b00-0x7b01)}">
+<S i="83" l="0" v="{[0x7b00-0x7b10)}"/>
+</P>
+<P i="84" n="targ7b10@plt [pdbformat.so]" ln="targ7b10@plt" l="0" v="{[0x7b10-0x7b11)}">
+<S i="85" l="0" v="{[0x7b10-0x7b20)}"/>
+</P>
+<P i="86" n="targ7b20@plt [pdbformat.so]" ln="targ7b20@plt" l="0" v="{[0x7b20-0x7b21)}">
+<S i="87" l="0" v="{[0x7b20-0x7b30)}"/>
+</P>
+<P i="88" n="targ7b30@plt [pdbformat.so]" ln="targ7b30@plt" l="0" v="{[0x7b30-0x7b31)}">
+<S i="89" l="0" v="{[0x7b30-0x7b40)}"/>
+</P>
+<P i="90" n="targ7b40@plt [pdbformat.so]" ln="targ7b40@plt" l="0" v="{[0x7b40-0x7b41)}">
+<S i="91" l="0" v="{[0x7b40-0x7b50)}"/>
+</P>
+<P i="92" n="targ7b50@plt [pdbformat.so]" ln="targ7b50@plt" l="0" v="{[0x7b50-0x7b51)}">
+<S i="93" l="0" v="{[0x7b50-0x7b60)}"/>
+</P>
+<P i="94" n="targ7b60@plt [pdbformat.so]" ln="targ7b60@plt" l="0" v="{[0x7b60-0x7b61)}">
+<S i="95" l="0" v="{[0x7b60-0x7b70)}"/>
+</P>
+<P i="96" n="targ7b70@plt [pdbformat.so]" ln="targ7b70@plt" l="0" v="{[0x7b70-0x7b71)}">
+<S i="97" l="0" v="{[0x7b70-0x7b80)}"/>
+</P>
+<P i="98" n="targ7b80@plt [pdbformat.so]" ln="targ7b80@plt" l="0" v="{[0x7b80-0x7b81)}">
+<S i="99" l="0" v="{[0x7b80-0x7b90)}"/>
+</P>
+<P i="100" n="targ7b90@plt [pdbformat.so]" ln="targ7b90@plt" l="0" v="{[0x7b90-0x7b91)}">
+<S i="101" l="0" v="{[0x7b90-0x7ba0)}"/>
+</P>
+<P i="102" n="targ7ba0@plt [pdbformat.so]" ln="targ7ba0@plt" l="0" v="{[0x7ba0-0x7ba1)}">
+<S i="103" l="0" v="{[0x7ba0-0x7bb0)}"/>
+</P>
+<P i="104" n="targ7bb0@plt [pdbformat.so]" ln="targ7bb0@plt" l="0" v="{[0x7bb0-0x7bb1)}">
+<S i="105" l="0" v="{[0x7bb0-0x7bc0)}"/>
+</P>
+<P i="106" n="targ7bc0@plt [pdbformat.so]" ln="targ7bc0@plt" l="0" v="{[0x7bc0-0x7bc1)}">
+<S i="107" l="0" v="{[0x7bc0-0x7bd0)}"/>
+</P>
+<P i="108" n="targ7bd0@plt [pdbformat.so]" ln="targ7bd0@plt" l="0" v="{[0x7bd0-0x7bd1)}">
+<S i="109" l="0" v="{[0x7bd0-0x7be0)}"/>
+</P>
+<P i="110" n="targ7be0@plt [pdbformat.so]" ln="targ7be0@plt" l="0" v="{[0x7be0-0x7be1)}">
+<S i="111" l="0" v="{[0x7be0-0x7bf0)}"/>
+</P>
+<P i="112" n="targ7bf0@plt [pdbformat.so]" ln="targ7bf0@plt" l="0" v="{[0x7bf0-0x7bf1)}">
+<S i="113" l="0" v="{[0x7bf0-0x7c00)}"/>
+</P>
+<P i="114" n="targ7c00@plt [pdbformat.so]" ln="targ7c00@plt" l="0" v="{[0x7c00-0x7c01)}">
+<S i="115" l="0" v="{[0x7c00-0x7c10)}"/>
+</P>
+<P i="116" n="targ7c10@plt [pdbformat.so]" ln="targ7c10@plt" l="0" v="{[0x7c10-0x7c11)}">
+<S i="117" l="0" v="{[0x7c10-0x7c20)}"/>
+</P>
+<P i="118" n="targ7c20@plt [pdbformat.so]" ln="targ7c20@plt" l="0" v="{[0x7c20-0x7c21)}">
+<S i="119" l="0" v="{[0x7c20-0x7c30)}"/>
+</P>
+<P i="120" n="targ7c30@plt [pdbformat.so]" ln="targ7c30@plt" l="0" v="{[0x7c30-0x7c31)}">
+<S i="121" l="0" v="{[0x7c30-0x7c40)}"/>
+</P>
+<P i="122" n="targ7c40@plt [pdbformat.so]" ln="targ7c40@plt" l="0" v="{[0x7c40-0x7c41)}">
+<S i="123" l="0" v="{[0x7c40-0x7c50)}"/>
+</P>
+<P i="124" n="targ7c50@plt [pdbformat.so]" ln="targ7c50@plt" l="0" v="{[0x7c50-0x7c51)}">
+<S i="125" l="0" v="{[0x7c50-0x7c60)}"/>
+</P>
+<P i="126" n="targ7c60@plt [pdbformat.so]" ln="targ7c60@plt" l="0" v="{[0x7c60-0x7c61)}">
+<S i="127" l="0" v="{[0x7c60-0x7c70)}"/>
+</P>
+<P i="128" n="targ7c70@plt [pdbformat.so]" ln="targ7c70@plt" l="0" v="{[0x7c70-0x7c71)}">
+<S i="129" l="0" v="{[0x7c70-0x7c80)}"/>
+</P>
+<P i="130" n="targ7c80@plt [pdbformat.so]" ln="targ7c80@plt" l="0" v="{[0x7c80-0x7c81)}">
+<S i="131" l="0" v="{[0x7c80-0x7c90)}"/>
+</P>
+<P i="132" n="targ7c90@plt [pdbformat.so]" ln="targ7c90@plt" l="0" v="{[0x7c90-0x7c91)}">
+<S i="133" l="0" v="{[0x7c90-0x7ca0)}"/>
+</P>
+<P i="134" n="targ7ca0@plt [pdbformat.so]" ln="targ7ca0@plt" l="0" v="{[0x7ca0-0x7ca1)}">
+<S i="135" l="0" v="{[0x7ca0-0x7cb0)}"/>
+</P>
+<P i="136" n="targ7cb0@plt [pdbformat.so]" ln="targ7cb0@plt" l="0" v="{[0x7cb0-0x7cb1)}">
+<S i="137" l="0" v="{[0x7cb0-0x7cc0)}"/>
+</P>
+<P i="138" n="targ7cc0@plt [pdbformat.so]" ln="targ7cc0@plt" l="0" v="{[0x7cc0-0x7cc1)}">
+<S i="139" l="0" v="{[0x7cc0-0x7cd0)}"/>
+</P>
+<P i="140" n="targ7cd0@plt [pdbformat.so]" ln="targ7cd0@plt" l="0" v="{[0x7cd0-0x7cd1)}">
+<S i="141" l="0" v="{[0x7cd0-0x7ce0)}"/>
+</P>
+<P i="142" n="targ7ce0@plt [pdbformat.so]" ln="targ7ce0@plt" l="0" v="{[0x7ce0-0x7ce1)}">
+<S i="143" l="0" v="{[0x7ce0-0x7cf0)}"/>
+</P>
+<P i="144" n="targ7cf0@plt [pdbformat.so]" ln="targ7cf0@plt" l="0" v="{[0x7cf0-0x7cf1)}">
+<S i="145" l="0" v="{[0x7cf0-0x7d00)}"/>
+</P>
+<P i="146" n="targ7d00@plt [pdbformat.so]" ln="targ7d00@plt" l="0" v="{[0x7d00-0x7d01)}">
+<S i="147" l="0" v="{[0x7d00-0x7d10)}"/>
+</P>
+<P i="148" n="targ7d10@plt [pdbformat.so]" ln="targ7d10@plt" l="0" v="{[0x7d10-0x7d11)}">
+<S i="149" l="0" v="{[0x7d10-0x7d20)}"/>
+</P>
+<P i="150" n="targ7d20@plt [pdbformat.so]" ln="targ7d20@plt" l="0" v="{[0x7d20-0x7d21)}">
+<S i="151" l="0" v="{[0x7d20-0x7d30)}"/>
+</P>
+<P i="152" n="targ7d30@plt [pdbformat.so]" ln="targ7d30@plt" l="0" v="{[0x7d30-0x7d31)}">
+<S i="153" l="0" v="{[0x7d30-0x7d40)}"/>
+</P>
+<P i="154" n="targ7d40@plt [pdbformat.so]" ln="targ7d40@plt" l="0" v="{[0x7d40-0x7d41)}">
+<S i="155" l="0" v="{[0x7d40-0x7d50)}"/>
+</P>
+<P i="156" n="targ7d50@plt [pdbformat.so]" ln="targ7d50@plt" l="0" v="{[0x7d50-0x7d51)}">
+<S i="157" l="0" v="{[0x7d50-0x7d60)}"/>
+</P>
+<P i="158" n="targ7d60@plt [pdbformat.so]" ln="targ7d60@plt" l="0" v="{[0x7d60-0x7d61)}">
+<S i="159" l="0" v="{[0x7d60-0x7d70)}"/>
+</P>
+<P i="160" n="targ7d70@plt [pdbformat.so]" ln="targ7d70@plt" l="0" v="{[0x7d70-0x7d71)}">
+<S i="161" l="0" v="{[0x7d70-0x7d80)}"/>
+</P>
+<P i="162" n="targ7d80@plt [pdbformat.so]" ln="targ7d80@plt" l="0" v="{[0x7d80-0x7d81)}">
+<S i="163" l="0" v="{[0x7d80-0x7d90)}"/>
+</P>
+<P i="164" n="targ7d90@plt [pdbformat.so]" ln="targ7d90@plt" l="0" v="{[0x7d90-0x7d91)}">
+<S i="165" l="0" v="{[0x7d90-0x7da0)}"/>
+</P>
+<P i="166" n="targ7da0@plt [pdbformat.so]" ln="targ7da0@plt" l="0" v="{[0x7da0-0x7da1)}">
+<S i="167" l="0" v="{[0x7da0-0x7db0)}"/>
+</P>
+<P i="168" n="targ7db0@plt [pdbformat.so]" ln="targ7db0@plt" l="0" v="{[0x7db0-0x7db1)}">
+<S i="169" l="0" v="{[0x7db0-0x7dc0)}"/>
+</P>
+<P i="170" n="targ7dc0@plt [pdbformat.so]" ln="targ7dc0@plt" l="0" v="{[0x7dc0-0x7dc1)}">
+<S i="171" l="0" v="{[0x7dc0-0x7dd0)}"/>
+</P>
+<P i="172" n="targ7dd0@plt [pdbformat.so]" ln="targ7dd0@plt" l="0" v="{[0x7dd0-0x7dd1)}">
+<S i="173" l="0" v="{[0x7dd0-0x7de0)}"/>
+</P>
+<P i="174" n="targ7de0@plt [pdbformat.so]" ln="targ7de0@plt" l="0" v="{[0x7de0-0x7de1)}">
+<S i="175" l="0" v="{[0x7de0-0x7df0)}"/>
+</P>
+<P i="176" n="targ7df0@plt [pdbformat.so]" ln="targ7df0@plt" l="0" v="{[0x7df0-0x7df1)}">
+<S i="177" l="0" v="{[0x7df0-0x7e00)}"/>
+</P>
+<P i="178" n="targ7e00@plt [pdbformat.so]" ln="targ7e00@plt" l="0" v="{[0x7e00-0x7e01)}">
+<S i="179" l="0" v="{[0x7e00-0x7e10)}"/>
+</P>
+<P i="180" n="targ7e10@plt [pdbformat.so]" ln="targ7e10@plt" l="0" v="{[0x7e10-0x7e11)}">
+<S i="181" l="0" v="{[0x7e10-0x7e20)}"/>
+</P>
+<P i="182" n="targ7e20@plt [pdbformat.so]" ln="targ7e20@plt" l="0" v="{[0x7e20-0x7e21)}">
+<S i="183" l="0" v="{[0x7e20-0x7e30)}"/>
+</P>
+<P i="184" n="targ7e30@plt [pdbformat.so]" ln="targ7e30@plt" l="0" v="{[0x7e30-0x7e31)}">
+<S i="185" l="0" v="{[0x7e30-0x7e40)}"/>
+</P>
+<P i="186" n="targ7e40@plt [pdbformat.so]" ln="targ7e40@plt" l="0" v="{[0x7e40-0x7e41)}">
+<S i="187" l="0" v="{[0x7e40-0x7e50)}"/>
+</P>
+<P i="188" n="targ7e50@plt [pdbformat.so]" ln="targ7e50@plt" l="0" v="{[0x7e50-0x7e51)}">
+<S i="189" l="0" v="{[0x7e50-0x7e60)}"/>
+</P>
+<P i="190" n="targ7e60@plt [pdbformat.so]" ln="targ7e60@plt" l="0" v="{[0x7e60-0x7e61)}">
+<S i="191" l="0" v="{[0x7e60-0x7e70)}"/>
+</P>
+<P i="192" n="targ7e70@plt [pdbformat.so]" ln="targ7e70@plt" l="0" v="{[0x7e70-0x7e71)}">
+<S i="193" l="0" v="{[0x7e70-0x7e80)}"/>
+</P>
+<P i="194" n="targ7e80@plt [pdbformat.so]" ln="targ7e80@plt" l="0" v="{[0x7e80-0x7e81)}">
+<S i="195" l="0" v="{[0x7e80-0x7e90)}"/>
+</P>
+<P i="196" n="targ7e90@plt [pdbformat.so]" ln="targ7e90@plt" l="0" v="{[0x7e90-0x7e91)}">
+<S i="197" l="0" v="{[0x7e90-0x7ea0)}"/>
+</P>
+<P i="198" n="targ7ea0@plt [pdbformat.so]" ln="targ7ea0@plt" l="0" v="{[0x7ea0-0x7ea1)}">
+<S i="199" l="0" v="{[0x7ea0-0x7eb0)}"/>
+</P>
+<P i="200" n="targ7eb0@plt [pdbformat.so]" ln="targ7eb0@plt" l="0" v="{[0x7eb0-0x7eb1)}">
+<S i="201" l="0" v="{[0x7eb0-0x7ec0)}"/>
+</P>
+<P i="202" n="targ7ec0@plt [pdbformat.so]" ln="targ7ec0@plt" l="0" v="{[0x7ec0-0x7ec1)}">
+<S i="203" l="0" v="{[0x7ec0-0x7ed0)}"/>
+</P>
+<P i="204" n="targ7ed0@plt [pdbformat.so]" ln="targ7ed0@plt" l="0" v="{[0x7ed0-0x7ed1)}">
+<S i="205" l="0" v="{[0x7ed0-0x7ee0)}"/>
+</P>
+<P i="206" n="targ7ee0@plt [pdbformat.so]" ln="targ7ee0@plt" l="0" v="{[0x7ee0-0x7ee1)}">
+<S i="207" l="0" v="{[0x7ee0-0x7ef0)}"/>
+</P>
+<P i="208" n="targ7ef0@plt [pdbformat.so]" ln="targ7ef0@plt" l="0" v="{[0x7ef0-0x7ef1)}">
+<S i="209" l="0" v="{[0x7ef0-0x7f00)}"/>
+</P>
+<P i="210" n="targ7f00@plt [pdbformat.so]" ln="targ7f00@plt" l="0" v="{[0x7f00-0x7f01)}">
+<S i="211" l="0" v="{[0x7f00-0x7f10)}"/>
+</P>
+<P i="212" n="targ7f10@plt [pdbformat.so]" ln="targ7f10@plt" l="0" v="{[0x7f10-0x7f11)}">
+<S i="213" l="0" v="{[0x7f10-0x7f20)}"/>
+</P>
+<P i="214" n="targ7f20@plt [pdbformat.so]" ln="targ7f20@plt" l="0" v="{[0x7f20-0x7f21)}">
+<S i="215" l="0" v="{[0x7f20-0x7f30)}"/>
+</P>
+<P i="216" n="targ7f30@plt [pdbformat.so]" ln="targ7f30@plt" l="0" v="{[0x7f30-0x7f31)}">
+<S i="217" l="0" v="{[0x7f30-0x7f40)}"/>
+</P>
+<P i="218" n="targ7f40@plt [pdbformat.so]" ln="targ7f40@plt" l="0" v="{[0x7f40-0x7f41)}">
+<S i="219" l="0" v="{[0x7f40-0x7f50)}"/>
+</P>
+<P i="220" n="targ7f50@plt [pdbformat.so]" ln="targ7f50@plt" l="0" v="{[0x7f50-0x7f51)}">
+<S i="221" l="0" v="{[0x7f50-0x7f60)}"/>
+</P>
+<P i="222" n="targ7f60@plt [pdbformat.so]" ln="targ7f60@plt" l="0" v="{[0x7f60-0x7f61)}">
+<S i="223" l="0" v="{[0x7f60-0x7f70)}"/>
+</P>
+<P i="224" n="targ7f70@plt [pdbformat.so]" ln="targ7f70@plt" l="0" v="{[0x7f70-0x7f71)}">
+<S i="225" l="0" v="{[0x7f70-0x7f80)}"/>
+</P>
+<P i="226" n="targ7f80@plt [pdbformat.so]" ln="targ7f80@plt" l="0" v="{[0x7f80-0x7f81)}">
+<S i="227" l="0" v="{[0x7f80-0x7f90)}"/>
+</P>
+<P i="228" n="targ7f90@plt [pdbformat.so]" ln="targ7f90@plt" l="0" v="{[0x7f90-0x7f91)}">
+<S i="229" l="0" v="{[0x7f90-0x7fa0)}"/>
+</P>
+<P i="230" n="targ7fa0@plt [pdbformat.so]" ln="targ7fa0@plt" l="0" v="{[0x7fa0-0x7fa1)}">
+<S i="231" l="0" v="{[0x7fa0-0x7fb0)}"/>
+</P>
+<P i="232" n="targ7fb0@plt [pdbformat.so]" ln="targ7fb0@plt" l="0" v="{[0x7fb0-0x7fb1)}">
+<S i="233" l="0" v="{[0x7fb0-0x7fc0)}"/>
+</P>
+<P i="234" n="targ7fc0@plt [pdbformat.so]" ln="targ7fc0@plt" l="0" v="{[0x7fc0-0x7fc1)}">
+<S i="235" l="0" v="{[0x7fc0-0x7fd0)}"/>
+</P>
+<P i="236" n="targ7fd0@plt [pdbformat.so]" ln="targ7fd0@plt" l="0" v="{[0x7fd0-0x7fd1)}">
+<S i="237" l="0" v="{[0x7fd0-0x7fe0)}"/>
+</P>
+<P i="238" n="targ7fe0@plt [pdbformat.so]" ln="targ7fe0@plt" l="0" v="{[0x7fe0-0x7fe1)}">
+<S i="239" l="0" v="{[0x7fe0-0x7ff0)}"/>
+</P>
+<P i="240" n="targ7ff0@plt [pdbformat.so]" ln="targ7ff0@plt" l="0" v="{[0x7ff0-0x7ff1)}">
+<S i="241" l="0" v="{[0x7ff0-0x8000)}"/>
+</P>
+<P i="242" n="targ8000@plt [pdbformat.so]" ln="targ8000@plt" l="0" v="{[0x8000-0x8001)}">
+<S i="243" l="0" v="{[0x8000-0x8010)}"/>
+</P>
+<P i="244" n="targ8010@plt [pdbformat.so]" ln="targ8010@plt" l="0" v="{[0x8010-0x8011)}">
+<S i="245" l="0" v="{[0x8010-0x8020)}"/>
+</P>
+<P i="246" n="targ8020@plt [pdbformat.so]" ln="targ8020@plt" l="0" v="{[0x8020-0x8021)}">
+<S i="247" l="0" v="{[0x8020-0x8030)}"/>
+</P>
+<P i="248" n="targ8030@plt [pdbformat.so]" ln="targ8030@plt" l="0" v="{[0x8030-0x8031)}">
+<S i="249" l="0" v="{[0x8030-0x8040)}"/>
+</P>
+<P i="250" n="targ8040@plt [pdbformat.so]" ln="targ8040@plt" l="0" v="{[0x8040-0x8041)}">
+<S i="251" l="0" v="{[0x8040-0x8050)}"/>
+</P>
+<P i="252" n="targ8050@plt [pdbformat.so]" ln="targ8050@plt" l="0" v="{[0x8050-0x8051)}">
+<S i="253" l="0" v="{[0x8050-0x8060)}"/>
+</P>
+<P i="254" n="targ8060@plt [pdbformat.so]" ln="targ8060@plt" l="0" v="{[0x8060-0x8061)}">
+<S i="255" l="0" v="{[0x8060-0x8070)}"/>
+</P>
+<P i="256" n="targ8070@plt [pdbformat.so]" ln="targ8070@plt" l="0" v="{[0x8070-0x8071)}">
+<S i="257" l="0" v="{[0x8070-0x8080)}"/>
+</P>
+<P i="258" n="targ8080@plt [pdbformat.so]" ln="targ8080@plt" l="0" v="{[0x8080-0x8081)}">
+<S i="259" l="0" v="{[0x8080-0x8090)}"/>
+</P>
+<P i="260" n="targ8090@plt [pdbformat.so]" ln="targ8090@plt" l="0" v="{[0x8090-0x8091)}">
+<S i="261" l="0" v="{[0x8090-0x80a0)}"/>
+</P>
+<P i="262" n="targ80a0@plt [pdbformat.so]" ln="targ80a0@plt" l="0" v="{[0x80a0-0x80a1)}">
+<S i="263" l="0" v="{[0x80a0-0x80b0)}"/>
+</P>
+<P i="264" n="targ80b0@plt [pdbformat.so]" ln="targ80b0@plt" l="0" v="{[0x80b0-0x80b1)}">
+<S i="265" l="0" v="{[0x80b0-0x80c0)}"/>
+</P>
+<P i="266" n="targ80c0@plt [pdbformat.so]" ln="targ80c0@plt" l="0" v="{[0x80c0-0x80c1)}">
+<S i="267" l="0" v="{[0x80c0-0x80d0)}"/>
+</P>
+<P i="268" n="targ80d0@plt [pdbformat.so]" ln="targ80d0@plt" l="0" v="{[0x80d0-0x80d1)}">
+<S i="269" l="0" v="{[0x80d0-0x80e0)}"/>
+</P>
+<P i="270" n="targ80e0@plt [pdbformat.so]" ln="targ80e0@plt" l="0" v="{[0x80e0-0x80e1)}">
+<S i="271" l="0" v="{[0x80e0-0x80f0)}"/>
+</P>
+<P i="272" n="targ80f0@plt [pdbformat.so]" ln="targ80f0@plt" l="0" v="{[0x80f0-0x80f1)}">
+<S i="273" l="0" v="{[0x80f0-0x8100)}"/>
+</P>
+<P i="274" n="targ8100@plt [pdbformat.so]" ln="targ8100@plt" l="0" v="{[0x8100-0x8101)}">
+<S i="275" l="0" v="{[0x8100-0x8110)}"/>
+</P>
+<P i="276" n="targ8110@plt [pdbformat.so]" ln="targ8110@plt" l="0" v="{[0x8110-0x8111)}">
+<S i="277" l="0" v="{[0x8110-0x8120)}"/>
+</P>
+<P i="278" n="OpenBabel::PDBFormat::SkipObjects(int, OpenBabel::OBConversion*) [clone .cold] [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormat11SkipObjectsEiPNS_12OBConversionE.cold" l="0" v="{[0x8140-0x8141)}">
+<S i="279" l="0" v="{[0x8140-0x82e2) [0x833d-0x83b0)}"/>
+<L i="280" l="0" f="[pdbformat.so]" v="{[0x83b0-0x83b1)}">
+<S i="281" l="0" v="{[0x83b0-0x8428)}"/>
+</L>
+</P>
+<P i="282" n="std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;::basic_string(char const*, std::allocator&lt;char&gt; const&amp;) [clone .isra.0] [clone .cold] [pdbformat.so]" ln="_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2EPKcRKS3_.isra.0.cold" l="0" v="{[0x815e-0x815f)}">
+<S i="283" l="0" v="{[0x815e-0x82e2) [0x833d-0x83b0)}"/>
+<L i="284" l="0" f="[pdbformat.so]" v="{[0x83b0-0x83b1)}">
+<S i="285" l="0" v="{[0x83b0-0x8428)}"/>
+</L>
+</P>
+<P i="286" n="OpenBabel::PDBFormat::WriteMolecule(OpenBabel::OBBase*, OpenBabel::OBConversion*) [clone .cold] [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormat13WriteMoleculeEPNS_6OBBaseEPNS_12OBConversionE.cold" l="0" v="{[0x8180-0x8181)}">
+<S i="287" l="0" v="{[0x8180-0x83b0)}"/>
+<L i="288" l="0" f="[pdbformat.so]" v="{[0x83b0-0x83b1)}">
+<S i="289" l="0" v="{[0x83b0-0x8428)}"/>
+</L>
+</P>
+<P i="290" n="OpenBabel::parseAtomRecord(char*, OpenBabel::OBMol&amp;, int) [clone .isra.0] [clone .cold] [pdbformat.so]" ln="_ZN9OpenBabelL15parseAtomRecordEPcRNS_5OBMolEi.isra.0.cold" l="0" v="{[0x8347-0x8348)}">
+<S i="291" l="0" v="{[0x8347-0x83b0) [0x8428-0x87c8)}"/>
+<L i="292" l="0" f="[pdbformat.so]" v="{[0x83b0-0x83b1)}">
+<S i="293" l="0" v="{[0x83b0-0x8428)}"/>
+</L>
+</P>
+<P i="294" n="OpenBabel::PDBFormat::ReadMolecule(OpenBabel::OBBase*, OpenBabel::OBConversion*) [clone .cold] [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormat12ReadMoleculeEPNS_6OBBaseEPNS_12OBConversionE.cold" l="0" v="{[0x87c8-0x87c9)}">
+<S i="295" l="0" v="{[0x87c8-0x87d3) [0x8858-0x88c1) [0x88d5-0x8e57)}"/>
+<L i="296" l="0" f="[pdbformat.so]" v="{[0x87d3-0x87d4)}">
+<S i="297" l="0" v="{[0x87d3-0x8805) [0x8834-0x8858)}"/>
+<L i="298" l="0" f="[pdbformat.so]" v="{[0x8805-0x8806)}">
+<S i="299" l="0" v="{[0x8805-0x8834) [0x88c1-0x88d5)}"/>
+</L>
+</L>
+</P>
+<P i="300" n="_GLOBAL__sub_I_pdbformat.cpp [pdbformat.so]" ln="_GLOBAL__sub_I_pdbformat.cpp" l="0" v="{[0x8e60-0x8e61)}">
+<S i="301" l="0" v="{[0x8e60-0x8e8b)}"/>
+</P>
+<P i="302" n="deregister_tm_clones [pdbformat.so]" ln="deregister_tm_clones" l="0" v="{[0x8e90-0x8e91)}">
+<S i="303" l="0" v="{[0x8e90-0x8ec0)}"/>
+</P>
+<P i="304" n="register_tm_clones [pdbformat.so]" ln="register_tm_clones" l="0" v="{[0x8ec0-0x8ec1)}">
+<S i="305" l="0" v="{[0x8ec0-0x8f00)}"/>
+</P>
+<P i="306" n="__do_global_dtors_aux [pdbformat.so]" ln="__do_global_dtors_aux" l="0" v="{[0x8f00-0x8f01)}">
+<S i="307" l="0" v="{[0x8f00-0x8f40)}"/>
+</P>
+<P i="308" n="frame_dummy [pdbformat.so]" ln="frame_dummy" l="0" v="{[0x8f40-0x8f41)}">
+<S i="309" l="0" v="{[0x8f40-0x8f80)}"/>
+</P>
+<P i="310" n="std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;::operator=(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&amp;) [clone .isra.0] [pdbformat.so]" ln="_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSEOS4_.isra.0" l="0" v="{[0x8f80-0x8f81)}">
+<S i="311" l="0" v="{[0x8f80-0x9058)}"/>
+</P>
+<P i="312" n="std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;::_M_construct&lt;char*&gt;(char*, char*, std::forward_iterator_tag) [clone .isra.0] [pdbformat.so]" ln="_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag.isra.0" l="0" v="{[0x9060-0x9061)}">
+<S i="313" l="0" v="{[0x9060-0x9130) [0x9141-0x9170) [0x91cc-0x9202) [0x9243-0x92c6) [0x92d0-0x92d7) [0x92e0-0x9360) [0x93b5-0x93c7) [0x9431-0x9448) [0x94d0-0x958b)}"/>
+<L i="314" l="0" f="[pdbformat.so]" v="{[0x9130-0x9131)}">
+<S i="315" l="0" v="{[0x9130-0x9141)}"/>
+</L>
+<L i="316" l="0" f="[pdbformat.so]" v="{[0x9170-0x9171)}">
+<S i="317" l="0" v="{[0x9170-0x91cc) [0x9210-0x9243)}"/>
+</L>
+<L i="318" l="0" f="[pdbformat.so]" v="{[0x9390-0x9391)}">
+<S i="319" l="0" v="{[0x9360-0x93b5) [0x93d0-0x9409) [0x9410-0x9431) [0x9450-0x9484) [0x9490-0x94ac) [0x94b0-0x94bd) [0x94c0-0x94ca)}"/>
+</L>
+</P>
+<P i="320" n="OpenBabel::PDBFormat::SkipObjects(int, OpenBabel::OBConversion*) [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormat11SkipObjectsEiPNS_12OBConversionE" l="0" v="{[0x9120-0x9121)}">
+<S i="321" l="0" v="{[0x9120-0x9130) [0x9141-0x9170) [0x91cc-0x9210) [0x9243-0x92c6) [0x92d0-0x92d7) [0x92e0-0x9360) [0x93b5-0x93c7) [0x9431-0x9448) [0x94d0-0x958b)}"/>
+<L i="322" l="0" f="[pdbformat.so]" v="{[0x9130-0x9131)}">
+<S i="323" l="0" v="{[0x9130-0x9141)}"/>
+</L>
+<L i="324" l="0" f="[pdbformat.so]" v="{[0x9170-0x9171)}">
+<S i="325" l="0" v="{[0x9170-0x91cc) [0x9210-0x9243)}"/>
+</L>
+<L i="326" l="0" f="[pdbformat.so]" v="{[0x9390-0x9391)}">
+<S i="327" l="0" v="{[0x9360-0x93b5) [0x93d0-0x9409) [0x9410-0x9431) [0x9450-0x9484) [0x9490-0x94ac) [0x94b0-0x94bd) [0x94c0-0x94ca)}"/>
+</L>
+</P>
+<P i="328" n="std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;::basic_string(char const*, std::allocator&lt;char&gt; const&amp;) [clone .isra.0] [pdbformat.so]" ln="_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2EPKcRKS3_.isra.0" l="0" v="{[0x9250-0x9251)}">
+<S i="329" l="0" v="{[0x9250-0x9360) [0x93b5-0x93c7) [0x9431-0x9448) [0x94d0-0x958b)}"/>
+<L i="330" l="0" f="[pdbformat.so]" v="{[0x9390-0x9391)}">
+<S i="331" l="0" v="{[0x9360-0x93b5) [0x93d0-0x9409) [0x9410-0x9431) [0x9450-0x9484) [0x9490-0x94ac) [0x94b0-0x94bd) [0x94c0-0x94ca)}"/>
+</L>
+</P>
+<P i="332" n="std::__find_if&lt;__gnu_cxx::__normal_iterator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;*, std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, __gnu_cxx::__ops::_Iter_equals_val&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&gt; &gt;(__gnu_cxx::__normal_iterator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;*, std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, __gnu_cxx::__normal_iterator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;*, std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt;, __gnu_cxx::__ops::_Iter_equals_val&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&gt;, std::random_access_iterator_tag) [clone .isra.0] [pdbformat.so]" ln="_ZSt9__find_ifIN9__gnu_cxx17__normal_iteratorIPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt6vectorIS7_SaIS7_EEEENS0_5__ops16_Iter_equals_valIKS7_EEET_SH_SH_T0_St26random_access_iterator_tag.isra.0" l="0" v="{[0x9320-0x9321)}">
+<S i="333" l="0" v="{[0x9320-0x9360) [0x93b5-0x93d0) [0x9409-0x9410) [0x9431-0x9450) [0x9484-0x9490) [0x94ac-0x94b0) [0x94bd-0x94c0) [0x94ca-0x958b)}"/>
+<L i="334" l="0" f="[pdbformat.so]" v="{[0x9390-0x9391)}">
+<S i="335" l="0" v="{[0x9360-0x93b5) [0x93d0-0x9409) [0x9410-0x9431) [0x9450-0x9484) [0x9490-0x94ac) [0x94b0-0x94bd) [0x94c0-0x94ca)}"/>
+</L>
+</P>
+<P i="336" n="OpenBabel::PDBFormat::WriteMolecule(OpenBabel::OBBase*, OpenBabel::OBConversion*) [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormat13WriteMoleculeEPNS_6OBBaseEPNS_12OBConversionE" l="0" v="{[0x9590-0x9591)}">
+<S i="337" l="0" v="{[0x8198-0x81c4) [0x82d3-0x83b0) [0x9590-0x95ab) [0x95bc-0x96f0) [0x99d9-0x9a10) [0x9b69-0x9b70) [0x9ddc-0x9de0) [0x9def-0x9df0) [0x9e3b-0x9e40) [0xa396-0xa3a0) [0xa3a8-0xa3b0) [0xa3d5-0xa3e0) [0xa42b-0xa430) [0xa47b-0xa480) [0xa48d-0xa490) [0xa49a-0xa4a0) [0xa515-0xa520) [0xa55a-0xa560) [0xa685-0xa690) [0xa7e6-0xa7f0) [0xaaf4-0xab00) [0xab39-0xab40) [0xaba3-0xabb0) [0xabef-0xabf0) [0xac48-0xac50) [0xadbe-0xadc0) [0xae22-0xae30) [0xaf85-0xaf87) [0xaf9a-0xafab) [0xb0fd-0xb12e) [0xb28a-0xb296) [0xb377-0xb380) [0xb7bf-0xb7c0) [0xb8f3-0xb943)}"/>
+<L i="338" l="0" f="[pdbformat.so]" v="{[0x81c4-0x81c5)}">
+<S i="339" l="0" v="{[0x81c4-0x82d3)}"/>
+</L>
+<L i="340" l="0" f="[pdbformat.so]" v="{[0x83b0-0x83b1)}">
+<S i="341" l="0" v="{[0x83b0-0x8428)}"/>
+</L>
+<L i="342" l="0" f="[pdbformat.so]" v="{[0x95ab-0x95ac)}">
+<S i="343" l="0" v="{[0x95ab-0x95bc)}"/>
+</L>
+<L i="344" l="0" f="[pdbformat.so]" v="{[0x96f0-0x96f1)}">
+<S i="345" l="0" v="{[0x96f0-0x99d9) [0x9a10-0x9b69) [0x9cbe-0x9ddc) [0x9e40-0xa150) [0xa16b-0xa396) [0xa3b0-0xa3d5) [0xa3e0-0xa42b) [0xa430-0xa47b) [0xa480-0xa48d) [0xa490-0xa49a) [0xa4a0-0xa515) [0xa560-0xa685) [0xa723-0xa7e6) [0xac0e-0xac48) [0xae56-0xaf85) [0xaf87-0xaf9a) [0xafab-0xafd7) [0xb03e-0xb0fd) [0xb12e-0xb28a) [0xb296-0xb377) [0xb380-0xb658) [0xb669-0xb7bf) [0xb7c0-0xb7c9) [0xb7db-0xb8f3)}"/>
+<L i="346" l="0" f="[pdbformat.so]" v="{[0x9b9f-0x9ba0)}">
+<S i="347" l="0" v="{[0x9b70-0x9cbe) [0x9de0-0x9def) [0x9df0-0x9e3b) [0xa3a0-0xa3a8)}"/>
+</L>
+<L i="348" l="0" f="[pdbformat.so]" v="{[0xa150-0xa151)}">
+<S i="349" l="0" v="{[0xa150-0xa16b)}"/>
+</L>
+<L i="350" l="0" f="[pdbformat.so]" v="{[0xa54b-0xa54c)}">
+<S i="351" l="0" v="{[0xa520-0xa55a)}"/>
+</L>
+<L i="352" l="0" f="[pdbformat.so]" v="{[0xa6f2-0xa6f3)}">
+<S i="353" l="0" v="{[0xa690-0xa723)}"/>
+</L>
+<L i="354" l="0" f="[pdbformat.so]" v="{[0xa8b8-0xa8b9)}">
+<S i="355" l="0" v="{[0xa7f0-0xaaf4) [0xab00-0xab39) [0xab40-0xaba3) [0xabb0-0xabef) [0xabf0-0xac0e) [0xafd7-0xb03e)}"/>
+</L>
+<L i="356" l="0" f="[pdbformat.so]" v="{[0xac6f-0xac70)}">
+<S i="357" l="0" v="{[0xac50-0xacd0) [0xaddf-0xadf0) [0xae09-0xae22)}"/>
+<L i="358" l="0" f="[pdbformat.so]" v="{[0xacd0-0xacd1)}">
+<S i="359" l="0" v="{[0xacd0-0xad20) [0xadc0-0xaddf) [0xae30-0xae56)}"/>
+<L i="360" l="0" f="[pdbformat.so]" v="{[0xad20-0xad21)}">
+<S i="361" l="0" v="{[0xad20-0xad5d) [0xada5-0xadbe)}"/>
+<L i="362" l="0" f="[pdbformat.so]" v="{[0xad5d-0xad5e)}">
+<S i="363" l="0" v="{[0xad5d-0xada5)}"/>
+</L>
+</L>
+</L>
+<L i="364" l="0" f="[pdbformat.so]" v="{[0xadf0-0xadf1)}">
+<S i="365" l="0" v="{[0xadf0-0xae09)}"/>
+</L>
+</L>
+<L i="366" l="0" f="[pdbformat.so]" v="{[0xb658-0xb659)}">
+<S i="367" l="0" v="{[0xb658-0xb669)}"/>
+</L>
+<L i="368" l="0" f="[pdbformat.so]" v="{[0xb7c9-0xb7ca)}">
+<S i="369" l="0" v="{[0xb7c9-0xb7db)}"/>
+</L>
+</L>
+</P>
+<P i="370" n="OpenBabel::parseAtomRecord(char*, OpenBabel::OBMol&amp;, int) [clone .isra.0] [pdbformat.so]" ln="_ZN9OpenBabelL15parseAtomRecordEPcRNS_5OBMolEi.isra.0" l="0" v="{[0xb950-0xb951)}">
+<S i="371" l="0" v="{[0x8348-0x83b0) [0x8428-0x87c8) [0xb950-0xc020) [0xc05d-0xc100) [0xc253-0xc280) [0xc44a-0xc460) [0xc471-0xc480) [0xc4bf-0xc4c0) [0xc561-0xc690) [0xcc67-0xcc70) [0xce14-0xce20) [0xce66-0xcec0) [0xcec8-0xced0) [0xcf62-0xcf90) [0xd0f8-0xd100) [0xd111-0xd120) [0xd15f-0xd160) [0xd217-0xd220) [0xd228-0xd230) [0xd23d-0xd240) [0xd25a-0xd260) [0xd276-0xd280) [0xd28d-0xd290) [0xd2aa-0xd2b0) [0xd2c6-0xd2e0) [0xd2f9-0xd300) [0xd326-0xd330) [0xd378-0xd380) [0xd3ab-0xd3f0) [0xd443-0xd650) [0xd670-0xd790) [0xd7bd-0xd7c0) [0xd7ed-0xd810) [0xd830-0xd850) [0xd860-0xd870) [0xd960-0xd990) [0xda63-0xda80) [0xdbdb-0xdbe0) [0xdc2f-0xdc30) [0xdc9c-0xdca0) [0xdca8-0xdcb0) [0xdcd1-0xddd0) [0xdded-0xddf0) [0xde75-0xde80) [0xdee5-0xdf60) [0xdf8b-0xdfb0) [0xdfcd-0xdfd0) [0xdfe0-0xe0f9) [0xe10a-0xe110) [0xe1b8-0xe2e6) [0xe308-0xe61b) [0xe6ae-0xe6b0) [0xe726-0xe876)}"/>
+<L i="372" l="0" f="[pdbformat.so]" v="{[0x83b0-0x83b1)}">
+<S i="373" l="0" v="{[0x83b0-0x8428)}"/>
+</L>
+<L i="374" l="0" f="[pdbformat.so]" v="{[0xc058-0xc059)}">
+<S i="375" l="0" v="{[0xc020-0xc05d)}"/>
+</L>
+<L i="376" l="0" f="[pdbformat.so]" v="{[0xc1d5-0xc1d6)}">
+<S i="377" l="0" v="{[0xc100-0xc253) [0xc460-0xc471) [0xc480-0xc4bf) [0xc4c0-0xc561) [0xcec0-0xcec8) [0xd650-0xd670) [0xde80-0xdebe) [0xdecf-0xdee5) [0xe6d9-0xe702)}"/>
+<L i="378" l="0" f="[pdbformat.so]" v="{[0xdebe-0xdebf)}">
+<S i="379" l="0" v="{[0xdebe-0xdecf)}"/>
+</L>
+</L>
+<L i="380" l="0" f="[pdbformat.so]" v="{[0xc419-0xc41a)}">
+<S i="381" l="0" v="{[0xc2f8-0xc44a) [0xc690-0xcc67) [0xcc70-0xcd30) [0xcd81-0xce14) [0xced0-0xcf62) [0xd230-0xd23d) [0xd240-0xd25a) [0xd260-0xd276) [0xd280-0xd28d) [0xd290-0xd2aa) [0xd2b0-0xd2c6) [0xd300-0xd310) [0xd321-0xd326) [0xd330-0xd378) [0xd380-0xd390) [0xd3a6-0xd3ab) [0xd790-0xd799) [0xd7b1-0xd7bd) [0xd7c0-0xd7c9) [0xd7e1-0xd7ed) [0xd810-0xd830) [0xd850-0xd860) [0xd870-0xd8fb) [0xd90c-0xd960) [0xd990-0xda63) [0xdf60-0xdf67) [0xdf7d-0xdf8b) [0xdfb0-0xdfcd) [0xdfd0-0xdfe0) [0xe110-0xe17f) [0xe2e6-0xe308) [0xe645-0xe6ae) [0xe702-0xe726)}"/>
+<L i="382" l="0" f="[pdbformat.so]" v="{[0xcd30-0xcd31)}">
+<S i="383" l="0" v="{[0xc280-0xc2f8) [0xcd30-0xcd81) [0xce20-0xce66) [0xddd0-0xdded)}"/>
+</L>
+<L i="384" l="0" f="[pdbformat.so]" v="{[0xd310-0xd311)}">
+<S i="385" l="0" v="{[0xd310-0xd321)}"/>
+</L>
+<L i="386" l="0" f="[pdbformat.so]" v="{[0xd390-0xd391)}">
+<S i="387" l="0" v="{[0xd390-0xd3a6)}"/>
+</L>
+<L i="388" l="0" f="[pdbformat.so]" v="{[0xd799-0xd79a)}">
+<S i="389" l="0" v="{[0xd799-0xd7b1)}"/>
+</L>
+<L i="390" l="0" f="[pdbformat.so]" v="{[0xd7c9-0xd7ca)}">
+<S i="391" l="0" v="{[0xd7c9-0xd7e1)}"/>
+</L>
+<L i="392" l="0" f="[pdbformat.so]" v="{[0xd8fb-0xd8fc)}">
+<S i="393" l="0" v="{[0xd8fb-0xd90c)}"/>
+</L>
+<L i="394" l="0" f="[pdbformat.so]" v="{[0xdf67-0xdf68)}">
+<S i="395" l="0" v="{[0xdf67-0xdf7d)}"/>
+</L>
+</L>
+<L i="396" l="0" f="[pdbformat.so]" v="{[0xd065-0xd066)}">
+<S i="397" l="0" v="{[0xcf90-0xd0f8) [0xd100-0xd111) [0xd120-0xd15f) [0xd160-0xd1d4) [0xd1e5-0xd217) [0xd220-0xd228) [0xd3f0-0xd443) [0xdcb0-0xdcd1) [0xe61b-0xe645)}"/>
+<L i="398" l="0" f="[pdbformat.so]" v="{[0xd1d4-0xd1d5)}">
+<S i="399" l="0" v="{[0xd1d4-0xd1e5)}"/>
+</L>
+</L>
+<L i="400" l="0" f="[pdbformat.so]" v="{[0xd2e0-0xd2e1)}">
+<S i="401" l="0" v="{[0xd2e0-0xd2f9)}"/>
+</L>
+<L i="402" l="0" f="[pdbformat.so]" v="{[0xdb55-0xdb56)}">
+<S i="403" l="0" v="{[0xda80-0xdbdb) [0xdbe0-0xdc2f) [0xdc30-0xdc9c) [0xdca0-0xdca8) [0xddf0-0xde4e) [0xde5f-0xde75) [0xe17f-0xe1b8) [0xe6b0-0xe6d9)}"/>
+<L i="404" l="0" f="[pdbformat.so]" v="{[0xde4e-0xde4f)}">
+<S i="405" l="0" v="{[0xde4e-0xde5f)}"/>
+</L>
+</L>
+<L i="406" l="0" f="[pdbformat.so]" v="{[0xe0f9-0xe0fa)}">
+<S i="407" l="0" v="{[0xe0f9-0xe10a)}"/>
+</L>
+</P>
+<P i="408" n="OpenBabel::PDBFormat::ReadMolecule(OpenBabel::OBBase*, OpenBabel::OBConversion*) [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormat12ReadMoleculeEPNS_6OBBaseEPNS_12OBConversionE" l="0" v="{[0xe880-0xe881)}">
+<S i="409" l="0" v="{[0x8858-0x88c1) [0x88d5-0x8e8b) [0xe880-0xe8a8) [0xe8b9-0xe901) [0xe914-0xea10) [0xed7e-0xed80) [0xedc1-0xedd0) [0xf211-0xf220) [0xf313-0xf320) [0xfabd-0xfac0) [0xfb81-0xfb90) [0xfc2f-0xfc30) [0xfc3f-0xfc40) [0xfc73-0xfc80) [0xfd3b-0xfd40) [0xfd48-0xfd50) [0xfda3-0xfdb0) [0xfdff-0xfe00) [0xfebe-0xfec0) [0xfecf-0xfed0) [0xff0a-0xff10) [0xff5c-0xff60) [0xff71-0xff80) [0xff88-0xff90) [0xff9d-0xffa0) [0xffcb-0xffd0) [0xffe1-0xfff0) [0x1000f-0x10010) [0x100fc-0x10100) [0x1076b-0x10770) [0x109e9-0x109f0) [0x10a0f-0x10a40) [0x10a86-0x10a90) [0x10b1a-0x10b20) [0x11594-0x1173e)}"/>
+<L i="410" l="0" f="[pdbformat.so]" v="{[0x87d3-0x87d4)}">
+<S i="411" l="0" v="{[0x87d3-0x8858) [0x88c1-0x88d5)}"/>
+</L>
+<L i="412" l="0" f="[pdbformat.so]" v="{[0xe8a8-0xe8a9)}">
+<S i="413" l="0" v="{[0xe8a8-0xe8b9)}"/>
+</L>
+<L i="414" l="0" f="[pdbformat.so]" v="{[0xe901-0xe902)}">
+<S i="415" l="0" v="{[0xe901-0xe914) [0xedf5-0xf211) [0xf220-0xf227) [0xf28e-0xf313) [0xf34c-0xf667) [0xfac0-0xfb81) [0xfc05-0xfc2f) [0xfd40-0xfd48) [0xff60-0xff71) [0xffa0-0xffcb) [0xffd0-0xffe1) [0x10082-0x100fc) [0x10161-0x106c3) [0x106df-0x10750) [0x107be-0x109e9) [0x10b15-0x10b1a) [0x10b20-0x10f77) [0x10fa1-0x1101f) [0x1104f-0x11480) [0x114aa-0x1152d) [0x11567-0x11594)}"/>
+<L i="416" l="0" f="[pdbformat.so]" v="{[0xea10-0xea11)}">
+<S i="417" l="0" v="{[0xea10-0xed7e) [0xed80-0xedc1) [0xedd0-0xedf5) [0xf320-0xf34c) [0xf6e0-0xf950) [0xf96a-0xfabd) [0xfc30-0xfc3f) [0xfc80-0xfd3b) [0xfd50-0xfda3) [0xfdb0-0xfdff) [0xfe00-0xfebe) [0xfec0-0xfecf) [0xfed0-0xff0a) [0xff80-0xff88) [0xff90-0xff9d) [0xfff0-0x1000f) [0x10010-0x1006c) [0x1007d-0x10082) [0x106c3-0x106df) [0x11480-0x114aa) [0x11541-0x11567)}"/>
+<L i="418" l="0" f="[pdbformat.so]" v="{[0xf950-0xf951)}">
+<S i="419" l="0" v="{[0xf950-0xf96a)}"/>
+</L>
+<L i="420" l="0" f="[pdbformat.so]" v="{[0x1006c-0x1006d)}">
+<S i="421" l="0" v="{[0x1006c-0x1007d)}"/>
+</L>
+</L>
+<L i="422" l="0" f="[pdbformat.so]" v="{[0xf227-0xf228)}">
+<S i="423" l="0" v="{[0xf227-0xf28e) [0xff10-0xff5c)}"/>
+</L>
+<L i="424" l="0" f="[pdbformat.so]" v="{[0xf6a9-0xf6aa)}">
+<S i="425" l="0" v="{[0xf667-0xf6e0) [0x1101f-0x1104f) [0x1152d-0x11541)}"/>
+</L>
+<L i="426" l="0" f="[pdbformat.so]" v="{[0xfb9d-0xfb9e)}">
+<S i="427" l="0" v="{[0xfb90-0xfba9)}"/>
+</L>
+<L i="428" l="0" f="[pdbformat.so]" v="{[0xfba9-0xfbaa)}">
+<S i="429" l="0" v="{[0xfba9-0xfc05) [0xfc40-0xfc73)}"/>
+</L>
+<L i="430" l="0" f="[pdbformat.so]" v="{[0x10150-0x10151)}">
+<S i="431" l="0" v="{[0x10100-0x10161)}"/>
+</L>
+<L i="432" l="0" f="[pdbformat.so]" v="{[0x10750-0x10751)}">
+<S i="433" l="0" v="{[0x10750-0x1076b) [0x109f0-0x10a0f) [0x10a6e-0x10a86) [0x10a90-0x10b15) [0x10f77-0x10fa1)}"/>
+<L i="434" l="0" f="[pdbformat.so]" v="{[0x107b9-0x107ba)}">
+<S i="435" l="0" v="{[0x10770-0x107be)}"/>
+</L>
+<L i="436" l="0" f="[pdbformat.so]" v="{[0x10a64-0x10a65)}">
+<S i="437" l="0" v="{[0x10a40-0x10a6e)}"/>
+</L>
+</L>
+</L>
+</P>
+<P i="438" n="std::ctype&lt;char&gt;::do_widen(char) const [pdbformat.so]" ln="_ZNKSt5ctypeIcE8do_widenEc" l="0" v="{[0x11740-0x11741)}">
+<S i="439" l="0" v="{[0x11740-0x11747)}"/>
+</P>
+<P i="440" n="OpenBabel::OBPlugin::MakeInstance(std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; const&amp;) [pdbformat.so]" ln="_ZN9OpenBabel8OBPlugin12MakeInstanceERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EE" l="0" v="{[0x11750-0x11751)}">
+<S i="441" l="0" v="{[0x11750-0x11757)}"/>
+</P>
+<P i="442" n="OpenBabel::OBPlugin::Init() [pdbformat.so]" ln="_ZN9OpenBabel8OBPlugin4InitEv" l="0" v="{[0x11760-0x11761)}">
+<S i="443" l="0" v="{[0x11760-0x11765)}"/>
+</P>
+<P i="444" n="OpenBabel::OBFormat::TypeID() [pdbformat.so]" ln="_ZN9OpenBabel8OBFormat6TypeIDEv" l="0" v="{[0x11770-0x11771)}">
+<S i="445" l="0" v="{[0x11770-0x1177c)}"/>
+</P>
+<P i="446" n="OpenBabel::OBFormat::SpecificationURL() [pdbformat.so]" ln="_ZN9OpenBabel8OBFormat16SpecificationURLEv" l="0" v="{[0x11780-0x11781)}">
+<S i="447" l="0" v="{[0x11780-0x1178c)}"/>
+</P>
+<P i="448" n="OpenBabel::OBFormat::GetMIMEType() [pdbformat.so]" ln="_ZN9OpenBabel8OBFormat11GetMIMETypeEv" l="0" v="{[0x11790-0x11791)}">
+<S i="449" l="0" v="{[0x11790-0x11799)}"/>
+</P>
+<P i="450" n="OpenBabel::OBFormat::Flags() [pdbformat.so]" ln="_ZN9OpenBabel8OBFormat5FlagsEv" l="0" v="{[0x117a0-0x117a1)}">
+<S i="451" l="0" v="{[0x117a0-0x117a7)}"/>
+</P>
+<P i="452" n="OpenBabel::OBFormat::SkipObjects(int, OpenBabel::OBConversion*) [pdbformat.so]" ln="_ZN9OpenBabel8OBFormat11SkipObjectsEiPNS_12OBConversionE" l="0" v="{[0x117b0-0x117b1)}">
+<S i="453" l="0" v="{[0x117b0-0x117b7)}"/>
+</P>
+<P i="454" n="OpenBabel::OBFormat::MakeNewInstance() [pdbformat.so]" ln="_ZN9OpenBabel8OBFormat15MakeNewInstanceEv" l="0" v="{[0x117c0-0x117c1)}">
+<S i="455" l="0" v="{[0x117c0-0x117c7)}"/>
+</P>
+<P i="456" n="OpenBabel::OBMoleculeFormat::GetType() [pdbformat.so]" ln="_ZN9OpenBabel16OBMoleculeFormat7GetTypeEv" l="0" v="{[0x117d0-0x117d1)}">
+<S i="457" l="0" v="{[0x117d0-0x117dc)}"/>
+</P>
+<P i="458" n="OpenBabel::OBGenericData::Clone(OpenBabel::OBBase*) const [pdbformat.so]" ln="_ZNK9OpenBabel13OBGenericData5CloneEPNS_6OBBaseE" l="0" v="{[0x117e0-0x117e1)}">
+<S i="459" l="0" v="{[0x117e0-0x117e7)}"/>
+</P>
+<P i="460" n="OpenBabel::OBGenericData::GetAttribute[abi:cxx11]() const [pdbformat.so]" ln="_ZNK9OpenBabel13OBGenericData12GetAttributeB5cxx11Ev" l="0" v="{[0x117f0-0x117f1)}">
+<S i="461" l="0" v="{[0x117f0-0x117f9)}"/>
+</P>
+<P i="462" n="OpenBabel::OBGenericData::GetValue[abi:cxx11]() const [pdbformat.so]" ln="_ZNK9OpenBabel13OBGenericData8GetValueB5cxx11Ev" l="0" v="{[0x11800-0x11801)}">
+<S i="463" l="0" v="{[0x11800-0x11809)}"/>
+</P>
+<P i="464" n="OpenBabel::OBGenericData::GetOrigin() const [pdbformat.so]" ln="_ZNK9OpenBabel13OBGenericData9GetOriginEv" l="0" v="{[0x11810-0x11811)}">
+<S i="465" l="0" v="{[0x11810-0x11818)}"/>
+</P>
+<P i="466" n="OpenBabel::OBPairData::GetValue[abi:cxx11]() const [pdbformat.so]" ln="_ZNK9OpenBabel10OBPairData8GetValueB5cxx11Ev" l="0" v="{[0x11820-0x11821)}">
+<S i="467" l="0" v="{[0x11820-0x11829)}"/>
+</P>
+<P i="468" n="OpenBabel::PDBFormat::Description() [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormat11DescriptionEv" l="0" v="{[0x11830-0x11831)}">
+<S i="469" l="0" v="{[0x11830-0x1183c)}"/>
+</P>
+<P i="470" n="OpenBabel::PDBFormat::SpecificationURL() [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormat16SpecificationURLEv" l="0" v="{[0x11840-0x11841)}">
+<S i="471" l="0" v="{[0x11840-0x1184c)}"/>
+</P>
+<P i="472" n="OpenBabel::PDBFormat::GetMIMEType() [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormat11GetMIMETypeEv" l="0" v="{[0x11850-0x11851)}">
+<S i="473" l="0" v="{[0x11850-0x1185c)}"/>
+</P>
+<P i="474" n="OpenBabel::OBPairTemplate&lt;double&gt;::GetGenericValue() const [pdbformat.so]" ln="_ZNK9OpenBabel14OBPairTemplateIdE15GetGenericValueEv" l="0" v="{[0x11860-0x11861)}">
+<S i="475" l="0" v="{[0x11860-0x11869)}"/>
+</P>
+<P i="476" n="OpenBabel::PDBFormat::~PDBFormat() [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormatD1Ev" l="0" v="{[0x11870-0x11871)}">
+<S i="477" l="0" v="{[0x11870-0x11875)}"/>
+</P>
+<P i="478" n="OpenBabel::PDBFormat::~PDBFormat() [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormatD0Ev" l="0" v="{[0x11880-0x11881)}">
+<S i="479" l="0" v="{[0x11880-0x11889)}"/>
+</P>
+<P i="480" n="OpenBabel::OBMoleculeFormat::WriteChemObject(OpenBabel::OBConversion*) [pdbformat.so]" ln="_ZN9OpenBabel16OBMoleculeFormat15WriteChemObjectEPNS_12OBConversionE" l="0" v="{[0x11890-0x11891)}">
+<S i="481" l="0" v="{[0x11890-0x118a2)}"/>
+</P>
+<P i="482" n="OpenBabel::OBMoleculeFormat::ReadChemObject(OpenBabel::OBConversion*) [pdbformat.so]" ln="_ZN9OpenBabel16OBMoleculeFormat14ReadChemObjectEPNS_12OBConversionE" l="0" v="{[0x118b0-0x118b1)}">
+<S i="483" l="0" v="{[0x118b0-0x118c2)}"/>
+</P>
+<P i="484" n="OpenBabel::OBFormat::GetMap() const [pdbformat.so]" ln="_ZNK9OpenBabel8OBFormat6GetMapEv" l="0" v="{[0x118d0-0x118d1)}">
+<S i="485" l="0" v="{[0x118d0-0x1195e)}"/>
+</P>
+<P i="486" n="OpenBabel::OBFormat::WriteMolecule(OpenBabel::OBBase*, OpenBabel::OBConversion*) [pdbformat.so]" ln="_ZN9OpenBabel8OBFormat13WriteMoleculeEPNS_6OBBaseEPNS_12OBConversionE" l="0" v="{[0x11960-0x11961)}">
+<S i="487" l="0" v="{[0x11960-0x11987)}"/>
+</P>
+<P i="488" n="std::_Rb_tree&lt;char const*, std::pair&lt;char const* const, OpenBabel::OBPlugin*&gt;, std::_Select1st&lt;std::pair&lt;char const* const, OpenBabel::OBPlugin*&gt; &gt;, OpenBabel::CharPtrLess, std::allocator&lt;std::pair&lt;char const* const, OpenBabel::OBPlugin*&gt; &gt; &gt;::_M_erase(std::_Rb_tree_node&lt;std::pair&lt;char const* const, OpenBabel::OBPlugin*&gt; &gt;*) [clone .isra.0] [pdbformat.so]" ln="_ZNSt8_Rb_treeIPKcSt4pairIKS1_PN9OpenBabel8OBPluginEESt10_Select1stIS7_ENS4_11CharPtrLessESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E.isra.0" l="0" v="{[0x11990-0x11991)}">
+<S i="489" l="0" v="{[0x11990-0x119ac) [0x11a68-0x11a70) [0x11aa3-0x11ab0) [0x11b26-0x11b35)}"/>
+<L i="490" l="0" f="[pdbformat.so]" v="{[0x119ac-0x119ad)}">
+<S i="491" l="0" v="{[0x119ac-0x119c3) [0x11b09-0x11b26)}"/>
+<L i="492" l="0" f="[pdbformat.so]" v="{[0x119c3-0x119c4)}">
+<S i="493" l="0" v="{[0x119c3-0x119d5) [0x11aec-0x11b09)}"/>
+<L i="494" l="0" f="[pdbformat.so]" v="{[0x119d5-0x119d6)}">
+<S i="495" l="0" v="{[0x119d5-0x119e2) [0x11ad3-0x11aec)}"/>
+<L i="496" l="0" f="[pdbformat.so]" v="{[0x119e2-0x119e3)}">
+<S i="497" l="0" v="{[0x119e2-0x119ef) [0x11a8a-0x11aa3)}"/>
+<L i="498" l="0" f="[pdbformat.so]" v="{[0x119ef-0x119f0)}">
+<S i="499" l="0" v="{[0x119ef-0x119f8) [0x11a52-0x11a68)}"/>
+<L i="500" l="0" f="[pdbformat.so]" v="{[0x119f8-0x119f9)}">
+<S i="501" l="0" v="{[0x119f8-0x11a02) [0x11a70-0x11a8a)}"/>
+<L i="502" l="0" f="[pdbformat.so]" v="{[0x11a02-0x11a03)}">
+<S i="503" l="0" v="{[0x11a02-0x11a0f) [0x11ab0-0x11ad3)}"/>
+<L i="504" l="0" f="[pdbformat.so]" v="{[0x11a0f-0x11a10)}">
+<S i="505" l="0" v="{[0x11a0f-0x11a18) [0x11a3c-0x11a52)}"/>
+<L i="506" l="0" f="[pdbformat.so]" v="{[0x11a18-0x11a19)}">
+<S i="507" l="0" v="{[0x11a18-0x11a3c)}"/>
+</L>
+</L>
+</L>
+</L>
+</L>
+</L>
+</L>
+</L>
+</L>
+</P>
+<P i="508" n="std::map&lt;char const*, OpenBabel::OBPlugin*, OpenBabel::CharPtrLess, std::allocator&lt;std::pair&lt;char const* const, OpenBabel::OBPlugin*&gt; &gt; &gt;::~map() [pdbformat.so]" ln="_ZNSt3mapIPKcPN9OpenBabel8OBPluginENS2_11CharPtrLessESaISt4pairIKS1_S4_EEED1Ev" l="0" v="{[0x11b40-0x11b41)}">
+<S i="509" l="0" v="{[0x11b40-0x11b4e) [0x11b68-0x11b6a)}"/>
+<L i="510" l="0" f="[pdbformat.so]" v="{[0x11b4e-0x11b4f)}">
+<S i="511" l="0" v="{[0x11b4e-0x11b68)}"/>
+</L>
+</P>
+<P i="512" n="OpenBabel::OBGenericData::~OBGenericData() [pdbformat.so]" ln="_ZN9OpenBabel13OBGenericDataD1Ev" l="0" v="{[0x11b70-0x11b71)}">
+<S i="513" l="0" v="{[0x11b70-0x11ba1)}"/>
+</P>
+<P i="514" n="OpenBabel::OBPairTemplate&lt;double&gt;::~OBPairTemplate() [pdbformat.so]" ln="_ZN9OpenBabel14OBPairTemplateIdED1Ev" l="0" v="{[0x11bb0-0x11bb1)}">
+<S i="515" l="0" v="{[0x11bb0-0x11be1)}"/>
+</P>
+<P i="516" n="OpenBabel::OBGenericData::~OBGenericData() [pdbformat.so]" ln="_ZN9OpenBabel13OBGenericDataD0Ev" l="0" v="{[0x11bf0-0x11bf1)}">
+<S i="517" l="0" v="{[0x11bf0-0x11c21)}"/>
+</P>
+<P i="518" n="OpenBabel::OBPairTemplate&lt;double&gt;::~OBPairTemplate() [pdbformat.so]" ln="_ZN9OpenBabel14OBPairTemplateIdED0Ev" l="0" v="{[0x11c30-0x11c31)}">
+<S i="519" l="0" v="{[0x11c30-0x11c61)}"/>
+</P>
+<P i="520" n="OpenBabel::OBFormat::ReadMolecule(OpenBabel::OBBase*, OpenBabel::OBConversion*) [pdbformat.so]" ln="_ZN9OpenBabel8OBFormat12ReadMoleculeEPNS_6OBBaseEPNS_12OBConversionE" l="0" v="{[0x11c70-0x11c71)}">
+<S i="521" l="0" v="{[0x11c70-0x11db9) [0x11dc0-0x11dc7) [0x11dd0-0x11e08) [0x11e31-0x11e91) [0x11ea0-0x123aa) [0x123d7-0x125da) [0x12603-0x12659) [0x12660-0x12683)}"/>
+<L i="522" l="0" f="[pdbformat.so]" v="{[0x11e23-0x11e24)}">
+<S i="523" l="0" v="{[0x11e08-0x11e31)}"/>
+</L>
+<L i="524" l="0" f="[pdbformat.so]" v="{[0x123c9-0x123ca)}">
+<S i="525" l="0" v="{[0x123aa-0x123d7)}"/>
+</L>
+<L i="526" l="0" f="[pdbformat.so]" v="{[0x125f5-0x125f6)}">
+<S i="527" l="0" v="{[0x125da-0x12603)}"/>
+</L>
+</P>
+<P i="528" n="OpenBabel::OBPairTemplate&lt;double&gt;::Clone(OpenBabel::OBBase*) const [pdbformat.so]" ln="_ZNK9OpenBabel14OBPairTemplateIdE5CloneEPNS_6OBBaseE" l="0" v="{[0x11d10-0x11d11)}">
+<S i="529" l="0" v="{[0x11d10-0x11e08) [0x11e31-0x11e91) [0x11ea0-0x123aa) [0x123d7-0x125da) [0x12603-0x12659) [0x12660-0x12683)}"/>
+<L i="530" l="0" f="[pdbformat.so]" v="{[0x11e23-0x11e24)}">
+<S i="531" l="0" v="{[0x11e08-0x11e31)}"/>
+</L>
+<L i="532" l="0" f="[pdbformat.so]" v="{[0x123c9-0x123ca)}">
+<S i="533" l="0" v="{[0x123aa-0x123d7)}"/>
+</L>
+<L i="534" l="0" f="[pdbformat.so]" v="{[0x125f5-0x125f6)}">
+<S i="535" l="0" v="{[0x125da-0x12603)}"/>
+</L>
+</P>
+<P i="536" n="OpenBabel::OBMoleculeFormat::OBMoleculeFormat() [pdbformat.so]" ln="_ZN9OpenBabel16OBMoleculeFormatC1Ev" l="0" v="{[0x11e40-0x11e41)}">
+<S i="537" l="0" v="{[0x11e40-0x123aa) [0x123d7-0x125da) [0x12603-0x12659) [0x12660-0x12683)}"/>
+<L i="538" l="0" f="[pdbformat.so]" v="{[0x123c9-0x123ca)}">
+<S i="539" l="0" v="{[0x123aa-0x123d7)}"/>
+</L>
+<L i="540" l="0" f="[pdbformat.so]" v="{[0x125f5-0x125f6)}">
+<S i="541" l="0" v="{[0x125da-0x12603)}"/>
+</L>
+</P>
+<P i="542" n="OpenBabel::PDBFormat::PDBFormat() [pdbformat.so]" ln="_ZN9OpenBabel9PDBFormatC1Ev" l="0" v="{[0x12460-0x12461)}">
+<S i="543" l="0" v="{[0x12460-0x125da) [0x12603-0x12659) [0x12660-0x12683)}"/>
+<L i="544" l="0" f="[pdbformat.so]" v="{[0x125f5-0x125f6)}">
+<S i="545" l="0" v="{[0x125da-0x12603)}"/>
+</L>
+</P>
+<P i="546" n="std::operator==&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;, char const*) [pdbformat.so]" ln="_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_" l="0" v="{[0x12630-0x12631)}">
+<S i="547" l="0" v="{[0x12630-0x12683)}"/>
+</P>
+<P i="548" n="std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;::~vector() [pdbformat.so]" ln="_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED1Ev" l="0" v="{[0x12690-0x12691)}">
+<S i="549" l="0" v="{[0x12690-0x126b0) [0x126ca-0x126e5)}"/>
+<L i="550" l="0" f="[pdbformat.so]" v="{[0x126b0-0x126b1)}">
+<S i="551" l="0" v="{[0x126b0-0x126ca)}"/>
+</L>
+</P>
+<P i="552" n="std::vector&lt;OpenBabel::OBGenericData*, std::allocator&lt;OpenBabel::OBGenericData*&gt; &gt;::_M_realloc_append&lt;OpenBabel::OBGenericData* const&amp;&gt;(OpenBabel::OBGenericData* const&amp;) [pdbformat.so]" ln="_ZNSt6vectorIPN9OpenBabel13OBGenericDataESaIS2_EE17_M_realloc_appendIJRKS2_EEEvDpOT_" l="0" v="{[0x126f0-0x126f1)}">
+<S i="553" l="0" v="{[0x126f0-0x12a7f) [0x12a80-0x12a95) [0x12ad2-0x12b5f) [0x12b73-0x12b7c)}"/>
+<L i="554" l="0" f="[pdbformat.so]" v="{[0x12ac4-0x12ac5)}">
+<S i="555" l="0" v="{[0x12a95-0x12aa0) [0x12ac4-0x12ad2)}"/>
+<L i="556" l="0" f="[pdbformat.so]" v="{[0x12aa0-0x12aa1)}">
+<S i="557" l="0" v="{[0x12aa0-0x12ac4) [0x12b5f-0x12b73)}"/>
+</L>
+</L>
+</P>
+<P i="558" n="OpenBabel::to_string&lt;unsigned int&gt;(unsigned int) [pdbformat.so]" ln="_ZN9OpenBabel9to_stringIjEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_" l="0" v="{[0x12800-0x12801)}">
+<S i="559" l="0" v="{[0x12800-0x12a95) [0x12ad2-0x12b5f) [0x12b73-0x12b7c)}"/>
+<L i="560" l="0" f="[pdbformat.so]" v="{[0x12ac4-0x12ac5)}">
+<S i="561" l="0" v="{[0x12a95-0x12aa0) [0x12ac4-0x12ad2)}"/>
+<L i="562" l="0" f="[pdbformat.so]" v="{[0x12aa0-0x12aa1)}">
+<S i="563" l="0" v="{[0x12aa0-0x12ac4) [0x12b5f-0x12b73)}"/>
+</L>
+</L>
+</P>
+<P i="564" n="std::__remove_if&lt;__gnu_cxx::__normal_iterator&lt;char*, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, __gnu_cxx::__ops::_Iter_equals_val&lt;char const&gt; &gt;(__gnu_cxx::__normal_iterator&lt;char*, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, __gnu_cxx::__normal_iterator&lt;char*, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, __gnu_cxx::__ops::_Iter_equals_val&lt;char const&gt;) [pdbformat.so]" ln="_ZSt11__remove_ifIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEENS0_5__ops16_Iter_equals_valIKcEEET_SE_SE_T0_" l="0" v="{[0x12b80-0x12b81)}">
+<S i="565" l="0" v="{[0x12b80-0x12ba0) [0x12bc8-0x12be0) [0x12bfa-0x12c69)}"/>
+<L i="566" l="0" f="[pdbformat.so]" v="{[0x12bc4-0x12bc5)}">
+<S i="567" l="0" v="{[0x12ba0-0x12bc8)}"/>
+</L>
+<L i="568" l="0" f="[pdbformat.so]" v="{[0x12be3-0x12be4)}">
+<S i="569" l="0" v="{[0x12be0-0x12bfa)}"/>
+</L>
+</P>
+<P i="570" n="_fini [pdbformat.so]" ln="_fini" l="0" v="{[0x12c6c-0x12c6d)}">
+<S i="571" l="0" v="{[0x12c6c-0x12c79)}"/>
+</P>
+</F>
+</LM>
+</HPCToolkitStructure>

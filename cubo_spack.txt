@@ -1,0 +1,26 @@
+
+ 1. Installa le librerie di sviluppo Qt5 di Ubuntu (ci vorranno pochissimi secondi):
+    sudo apt update
+    sudo apt install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5widgets5
+
+  2. Fai rilevare a Spack il Qt di sistema:
+    source ~/spack/share/spack/setup-env.sh
+    spack env activate mudock_zen5
+    spack external find qt
+    (Questo comando scansiona il sistema, trova il Qt appena installato e lo aggiunge alla configurazione di Spack come pacchetto esterno).
+  3. Re-inseriamo  cube  in  spack.yaml  ed eseguiamo l'installazione:
+  Se vuoi posso modificare io il file  spack.yaml  rimettendo  cube , oppure puoi farlo tu aggiungendo  - cube  sotto  specs .
+  Dopodiché ti basterà fare:
+    spack concretize -f
+    spack install
+    Spack rileverà che  qt  è già installato ("external") e compilerà soltanto  cube  in meno di un minuto!
+  ──────
+  ### Opzione Alternativa: Compilazione manuale classica
+
+  Se preferisci non usare Spack per la GUI, puoi compilare manualmente CubeGUI scaricando i sorgenti, ma dovresti compilare anche  cubelib  (la libreria di
+  lettura per i file  .cubex  su cui si appoggia la GUI).
+
+  La prima opzione (usare Spack con Qt esterno) è di gran lunga la più pulita e rapida da gestire.
+
+
+  agy --conversation=cc5e1fd7-131b-4df7-a21c-434a681112be

@@ -1,0 +1,81 @@
+# started on Wed Jun 24 09:27:05 2026
+
+#           time             counts unit events
+     0.501447059           5,888.76 msec task-clock                       #   11.778 CPUs utilized             
+     0.501447059     19,436,602,515      cycles                           #    3.301 GHz                         (85.74%)
+     0.501447059     40,939,703,014      instructions                     #    2.11  insn per cycle            
+     0.501447059                                                   #    0.01  stalled cycles per insn     (85.73%)
+     0.501447059      3,471,406,794      branches                         #  589.497 M/sec                       (85.69%)
+     0.501447059         11,153,121      branch-misses                    #    0.32% of all branches             (85.67%)
+     0.501447059        365,762,912      stalled-cycles-frontend          #    1.88% frontend cycles idle        (85.70%)
+     0.501447059    <not supported>      stalled-cycles-backend                                                
+     0.501447059        732,485,920      cache-references                 #  124.387 M/sec                       (85.72%)
+     0.501447059          2,371,556      cache-misses                     #    0.32% of all cache refs           (85.75%)
+     0.501447059                239      context-switches                 #   40.586 /sec                      
+     0.501447059                  4      cpu-migrations                   #    0.679 /sec                      
+     0.501447059             30,979      page-faults                      #    5.261 K/sec                     
+     1.002429300           7,945.86 msec task-clock                       #   15.892 CPUs utilized             
+     1.002429300     25,000,873,893      cycles                           #    3.146 GHz                         (85.78%)
+     1.002429300     51,116,116,779      instructions                     #    2.04  insn per cycle            
+     1.002429300                                                   #    0.01  stalled cycles per insn     (85.78%)
+     1.002429300      4,160,691,816      branches                         #  523.630 M/sec                       (85.61%)
+     1.002429300          8,552,746      branch-misses                    #    0.21% of all branches             (85.67%)
+     1.002429300        351,082,430      stalled-cycles-frontend          #    1.40% frontend cycles idle        (85.72%)
+     1.002429300    <not supported>      stalled-cycles-backend                                                
+     1.002429300        967,813,593      cache-references                 #  121.801 M/sec                       (85.70%)
+     1.002429300            713,325      cache-misses                     #    0.07% of all cache refs           (85.73%)
+     1.002429300                496      context-switches                 #   62.422 /sec                      
+     1.002429300                  0      cpu-migrations                   #    0.000 /sec                      
+     1.002429300                  0      page-faults                      #    0.000 /sec                      
+     1.503279532           7,882.71 msec task-clock                       #   15.765 CPUs utilized             
+     1.503279532     24,767,417,337      cycles                           #    3.142 GHz                         (85.66%)
+     1.503279532     50,825,159,363      instructions                     #    2.05  insn per cycle            
+     1.503279532                                                   #    0.01  stalled cycles per insn     (85.73%)
+     1.503279532      4,140,416,851      branches                         #  525.253 M/sec                       (85.73%)
+     1.503279532          8,700,145      branch-misses                    #    0.21% of all branches             (85.74%)
+     1.503279532        359,591,104      stalled-cycles-frontend          #    1.45% frontend cycles idle        (85.72%)
+     1.503279532    <not supported>      stalled-cycles-backend                                                
+     1.503279532        971,374,836      cache-references                 #  123.229 M/sec                       (85.72%)
+     1.503279532            802,289      cache-misses                     #    0.08% of all cache refs           (85.71%)
+     1.503279532                553      context-switches                 #   70.154 /sec                      
+     1.503279532                  0      cpu-migrations                   #    0.000 /sec                      
+     1.503279532                  0      page-faults                      #    0.000 /sec                      
+     2.005950301           7,663.74 msec task-clock                       #   15.327 CPUs utilized             
+     2.005950301     24,148,632,842      cycles                           #    3.151 GHz                         (85.76%)
+     2.005950301     50,778,652,569      instructions                     #    2.10  insn per cycle            
+     2.005950301                                                   #    0.01  stalled cycles per insn     (85.74%)
+     2.005950301      4,146,343,608      branches                         #  541.034 M/sec                       (85.72%)
+     2.005950301          8,998,058      branch-misses                    #    0.22% of all branches             (85.70%)
+     2.005950301        346,301,903      stalled-cycles-frontend          #    1.43% frontend cycles idle        (85.70%)
+     2.005950301    <not supported>      stalled-cycles-backend                                                
+     2.005950301        952,080,995      cache-references                 #  124.232 M/sec                       (85.69%)
+     2.005950301            639,400      cache-misses                     #    0.07% of all cache refs           (85.69%)
+     2.005950301                359      context-switches                 #   46.844 /sec                      
+     2.005950301                  2      cpu-migrations                   #    0.261 /sec                      
+     2.005950301                  0      page-faults                      #    0.000 /sec                      
+     2.506685666           3,163.25 msec task-clock                       #    6.327 CPUs utilized             
+     2.506685666     11,163,241,794      cycles                           #    3.529 GHz                         (85.76%)
+     2.506685666     37,396,730,850      instructions                     #    3.35  insn per cycle            
+     2.506685666                                                   #    0.00  stalled cycles per insn     (85.67%)
+     2.506685666      3,075,126,794      branches                         #  972.141 M/sec                       (85.66%)
+     2.506685666          7,124,534      branch-misses                    #    0.23% of all branches             (85.73%)
+     2.506685666        135,558,275      stalled-cycles-frontend          #    1.21% frontend cycles idle        (85.73%)
+     2.506685666    <not supported>      stalled-cycles-backend                                                
+     2.506685666        489,205,029      cache-references                 #  154.653 M/sec                       (85.71%)
+     2.506685666            451,592      cache-misses                     #    0.09% of all cache refs           (85.73%)
+     2.506685666                 44      context-switches                 #   13.910 /sec                      
+     2.506685666                 17      cpu-migrations                   #    5.374 /sec                      
+     2.506685666                  0      page-faults                      #    0.000 /sec                      
+     2.554942694             136.29 msec task-clock                       #    0.273 CPUs utilized             
+     2.554942694        540,426,012      cycles                           #    3.965 GHz                         (85.52%)
+     2.554942694        573,942,343      instructions                     #    1.06  insn per cycle            
+     2.554942694                                                   #    0.06  stalled cycles per insn     (85.34%)
+     2.554942694         78,143,290      branches                         #  573.365 M/sec                       (86.37%)
+     2.554942694            256,725      branch-misses                    #    0.33% of all branches             (86.85%)
+     2.554942694         33,751,434      stalled-cycles-frontend          #    6.25% frontend cycles idle        (87.00%)
+     2.554942694    <not supported>      stalled-cycles-backend                                                
+     2.554942694         16,646,340      cache-references                 #  122.140 M/sec                       (87.24%)
+     2.554942694          1,482,685      cache-misses                     #    8.91% of all cache refs           (84.18%)
+     2.554942694                 65      context-switches                 #  476.928 /sec                      
+     2.554942694                 18      cpu-migrations                   #  132.072 /sec                      
+     2.554942694             24,880      page-faults                      #  182.553 K/sec                     

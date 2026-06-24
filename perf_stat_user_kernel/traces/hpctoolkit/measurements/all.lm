@@ -1,0 +1,10 @@
+/home/olly/UNI/progetto_aca/muDock/build/application/muDock
+/home/olly/spack/opt/spack/linux-zen5/hpctoolkit-2026.0.1-jypt6n4ilryhxjdeeht3vf5j7ae4dgae/lib/libhpcrun.so
+/home/olly/spack/opt/spack/linux-zen5/intel-oneapi-tbb-2023.0.0-x5ryzeaq4sgzdooks7zx5jl3uupmmnlr/tbb/2023.0/lib/libtbb.so.12.18
+/home/olly/spack/opt/spack/linux-zen5/openbabel-3.1.1-nkqmkmswwynl4ismnzgixnf6bgsglwbn/lib/libopenbabel.so.7.0.0
+/home/olly/spack/opt/spack/linux-zen5/openbabel-3.1.1-nkqmkmswwynl4ismnzgixnf6bgsglwbn/lib/openbabel/3.1.0/pdbformat.so
+/home/olly/spack/opt/spack/linux-zen5/papi-7.2.0-phjflxwdo3jiguixa6ltrkwmaadrgujj/lib/libpapi.so.7.2.0.0
+/usr/lib/x86_64-linux-gnu/libc.so.6
+/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0
+/usr/lib/x86_64-linux-gnu/libm.so.6
+/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33

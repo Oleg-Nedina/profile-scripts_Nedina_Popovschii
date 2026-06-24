@@ -1,0 +1,62 @@
+# ==============================================================================
+# Guida alla modifica del CMakeLists.txt per l'integrazione di perf_stat_user_kernel
+# ==============================================================================
+#
+# Puoi integrare il modulo di profiling sia come libreria statica locale
+# sia includendo direttamente i sorgenti. Ecco i passi suggeriti per il CMakeLists.txt:
+
+# ------------------------------------------------------------------------------
+# 1. Definizione delle Opzioni in CMake (es. nel CMakeLists.txt principale)
+# ------------------------------------------------------------------------------
+option(ACA_ENABLE_USER_EVENTS "Abilita il tracciamento degli User Events per Perfetto" OFF)
+option(ACA_ENABLE_PAPI        "Abilita la lettura dei contatori hardware PAPI nei kernel" OFF)
+
+# ------------------------------------------------------------------------------
+# 2. Configurazione delle dipendenze PAPI
+# ------------------------------------------------------------------------------
+if(ACA_ENABLE_PAPI)
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(PAPI REQUIRED papi)
+  # Se non trovi PAPI via pkg-config, puoi cercarlo manualmente:
+  # find_path(PAPI_INCLUDE_DIR NAMES papi.h)
+  # find_library(PAPI_LIBRARY NAMES papi)
+endif()
+
+# ------------------------------------------------------------------------------
+# 3. Creazione del target della libreria di profiling
+# ------------------------------------------------------------------------------
+# Definiamo i sorgenti della libreria di profiling
+set(ACA_PROFILER_SRCS
+  "${PROJECT_SOURCE_DIR}/profile-scripts_Nedina_Popovschii/perf_stat_user_kernel/src/aca_user_events.cpp"
+  "${PROJECT_SOURCE_DIR}/profile-scripts_Nedina_Popovschii/perf_stat_user_kernel/src/aca_papi_tracer.cpp"
+)
+
+add_library(aca_profiler STATIC ${ACA_PROFILER_SRCS})
+
+target_include_directories(aca_profiler PUBLIC 
+  "${PROJECT_SOURCE_DIR}/profile-scripts_Nedina_Popovschii/perf_stat_user_kernel/include"
+)
+
+# Impostiamo le definizioni di preprocessore condizionali
+if(ACA_ENABLE_USER_EVENTS)
+  target_compile_definitions(aca_profiler PUBLIC ACA_ENABLE_USER_EVENTS)
+endif()
+
+if(ACA_ENABLE_PAPI)
+  target_compile_definitions(aca_profiler PUBLIC ACA_ENABLE_PAPI)
+  target_include_directories(aca_profiler PRIVATE ${PAPI_INCLUDE_DIRS})
+  target_link_libraries(aca_profiler PUBLIC ${PAPI_LIBRARIES})
+endif()
+
+# ------------------------------------------------------------------------------
+# 4. Link della libreria al tuo target principale (es. muDock)
+# ------------------------------------------------------------------------------
+# Nel CMakeLists.txt dove definisci l'eseguibile target (es. muDock):
+#
+# target_link_libraries(muDock PRIVATE aca_profiler)
+#
+# Se hai abilitato PAPI, accertati che l'eseguibile si colleghi anche con PAPI:
+#
+# if(ACA_ENABLE_PAPI)
+#   target_link_libraries(muDock PRIVATE ${PAPI_LIBRARIES})
+# endif()

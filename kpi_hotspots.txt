@@ -1,0 +1,43 @@
+{
+  "hardware": {
+    "model": "AMD Ryzen AI 7 PRO 350 w/ Radeon 860M",
+    "papi_version": "7.2.0"
+  },
+  "events": ["PAPI_TOT_CYC", "PAPI_TOT_INS", "PAPI_L1_DCM", "PAPI_L2_DCM", "PAPI_BR_MSP", "PAPI_BR_PRC"],
+  "kernels": [
+    {
+      "id": 6,
+      "name": "Kernel-6",
+      "total_calls": 90,
+      "total_time_us": 788733,
+      "thread_count": 4,
+      "aggregated_counters": [2578179091, 8341970919, 30284672, 397881, 8816436, 287855911],
+      "threads": [
+        {
+          "tid": 160648,
+          "calls": 22,
+          "time_us": 193255,
+          "counters": [632278040, 2039148298, 7399015, 81938, 2151722, 70368185]
+        },
+        {
+          "tid": 160649,
+          "calls": 23,
+          "time_us": 197641,
+          "counters": [651650548, 2131836908, 7684774, 66734, 2248846, 73567421]
+        },
+        {
+          "tid": 160650,
+          "calls": 22,
+          "time_us": 197107,
+          "counters": [631356249, 2039148658, 7424993, 101352, 2160297, 70359610]
+        },
+        {
+          "tid": 160651,
+          "calls": 23,
+          "time_us": 200730,
+          "counters": [662894254, 2131837055, 7775890, 147857, 2255571, 73560695]
+        }
+      ]
+    }
+  ]
+}

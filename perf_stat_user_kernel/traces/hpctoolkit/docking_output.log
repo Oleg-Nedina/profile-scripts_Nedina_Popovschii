@@ -1,0 +1,120 @@
+[        0.00 ]    INFO Reading and parsing protein "../../muDock/data/1fkb/1fkb_protein.pdb" ...
+[        0.03 ]    INFO Reading ligand "../../muDock/data/1fkb/ligands100_12col.adtmol2" ...
+[        0.03 ]    INFO Pipeline selection: search=genetic, score=adt
+[        0.03 ]    INFO Starting CPU device 0.
+[        3.15 ]    INFO Starting CPU device 1.
+[        3.15 ]    INFO Starting CPU device 2.
+[        3.15 ]    INFO Starting CPU device 3.
+[        3.15 ]    INFO Manager done: workers created
+[aca_papi] Warning: evento 'PAPI_L2_DCM' non supportato o incompatibile con le risorse correnti (Event exists, but cannot be counted due to hardware resource limits) — ignorato
+[aca_papi] Warning: evento 'PAPI_BR_MSP' non supportato o incompatibile con le risorse correnti (Event exists, but cannot be counted due to hardware resource limits) — ignorato
+[aca_papi] Warning: evento 'PAPI_BR_PRC' non supportato o incompatibile con le risorse correnti (Event exists, but cannot be counted due to hardware resource limits) — ignorato
+[aca_papi] ✓ Inizializzato su AMD Ryzen AI 7 PRO 350 w/ Radeon 860M
+  Contatori (3):  PAPI_TOT_CYC  PAPI_TOT_INS  PAPI_L1_DCM
+[aca_papi] Errore: PAPI_start fallito
+  Verifica: sudo sysctl -w kernel.perf_event_paranoid=-1
+[aca_papi] Errore: PAPI_start fallito
+  Verifica: sudo sysctl -w kernel.perf_event_paranoid=-1
+[aca_papi] Errore: PAPI_start fallito
+  Verifica: sudo sysctl -w kernel.perf_event_paranoid=-1
+[aca_papi] Errore: PAPI_start fallito
+  Verifica: sudo sysctl -w kernel.perf_event_paranoid=-1
+[        3.16 ]    INFO Pipeline done: closing input queue
+1fkb_ligand 2.600618
+1fkb_ligand 131.066360
+1fkb_ligand 12637.194336
+1fkb_ligand 121122.867188
+1fkb_ligand 3175.704102
+1fkb_ligand -2.913953
+1fkb_ligand 96090.101562
+1fkb_ligand 2594.374512
+1fkb_ligand 7577.062988
+1fkb_ligand 68736.523438
+1fkb_ligand -2.336680
+1fkb_ligand 3.874779
+1fkb_ligand 466.104492
+1fkb_ligand -6.238958
+1fkb_ligand -5.152411
+1fkb_ligand 2379.601807
+1fkb_ligand -2.366685
+1fkb_ligand 4316.416504
+1fkb_ligand 15543.325195
+1fkb_ligand 25327.642578
+1fkb_ligand 53.946842
+1fkb_ligand 15.299331
+1fkb_ligand -5.356907
+1fkb_ligand -3.960814
+1fkb_ligand -2.172098
+1fkb_ligand 101.045616
+1fkb_ligand -4.856889
+1fkb_ligand -0.300841
+1fkb_ligand -2.682780
+1fkb_ligand 2516.816406
+1fkb_ligand -3.968607
+1fkb_ligand 13863.222656
+1fkb_ligand 73006.304688
+1fkb_ligand -5.853523
+1fkb_ligand 512.729004
+1fkb_ligand 5866.665527
+1fkb_ligand -6.581630
+1fkb_ligand -3.180324
+1fkb_ligand -6.723372
+1fkb_ligand -4.550264
+1fkb_ligand -1.595642
+1fkb_ligand 25974.333984
+1fkb_ligand 5965.443848
+1fkb_ligand 1.203020
+1fkb_ligand 20272.791016
+1fkb_ligand -6.515254
+1fkb_ligand -2.503037
+1fkb_ligand 9705.360352
+1fkb_ligand -3.603192
+1fkb_ligand -3.023375
+1fkb_ligand -5.361861
+1fkb_ligand -5.580299
+1fkb_ligand -4.835862
+1fkb_ligand -3.625592
+1fkb_ligand -6.289544
+1fkb_ligand 289.833618
+1fkb_ligand 5740.011230
+1fkb_ligand -6.398551
+1fkb_ligand -2.605912
+1fkb_ligand -0.116489
+1fkb_ligand -1.669525
+1fkb_ligand 20.361368
+1fkb_ligand 2517.375732
+1fkb_ligand -4.754278
+1fkb_ligand -7.558801
+1fkb_ligand -1.851812
+1fkb_ligand -5.663185
+1fkb_ligand 911.323425
+1fkb_ligand 9561.184570
+1fkb_ligand 12.341022
+1fkb_ligand 123.422844
+1fkb_ligand 12451.668945
+1fkb_ligand -5.057766
+1fkb_ligand -1.903956
+1fkb_ligand -3.621814
+1fkb_ligand 9400.917969
+1fkb_ligand 55702.808594
+1fkb_ligand -6.643128
+1fkb_ligand -2.339815
+1fkb_ligand 10.819553
+1fkb_ligand 1.097334
+1fkb_ligand 6.873413
+1fkb_ligand 3964.931152
+1fkb_ligand 48.522480
+1fkb_ligand 51.244961
+1fkb_ligand 1612.092651
+1fkb_ligand -3.084637
+1fkb_ligand -5.338365
+1fkb_ligand 6763.339355
+1fkb_ligand 3094.760986
+[       22.95 ]    INFO Output drained
+[       22.95 ]    INFO All Done!
+[aca_papi] Nessun record da riportare.
+[aca_user_events] ✓ Traccia: trace_user_events.json
+  - Eventi     : 27115
+  - Tempo user : 100693 ms
+  - Tempo tot  : 23051 ms
+  - Utilization: 436.824 %
