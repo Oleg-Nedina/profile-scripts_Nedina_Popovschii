@@ -116,7 +116,9 @@ void UserEventTracer::commitThreadEvents(std::vector<UserEventRecord>& evts) {
 
 void UserEventTracer::startEvent(int id, const char* /*default_name*/) {
     if (id < 1 || id > kMaxUserEvents) return;
-    tl_guard.starts[id - 1] = now_us();
+    const int idx = id - 1;
+    if (cached_names_[idx].empty()) return;
+    tl_guard.starts[idx] = now_us();
 }
 
 void UserEventTracer::stopEvent(int id) {
@@ -251,7 +253,7 @@ void UserEventTracer::flush(bool from_destructor) {
     out << "\n],\"displayTimeUnit\":\"us\"}\n";
     out.close();
 
-    std::cerr << "[aca_user_events] ✓ Trace file written: " << filepath << "\n"
+    std::cerr << "[aca_user_events] Trace file written: " << filepath << "\n"
               << "  - Total events : " << all_events.size() << "\n"
               << "  - User code duration : " << (total_user_time_us / 1000) << " ms\n"
               << "  - Program total time : " << (total_time_us / 1000) << " ms\n"

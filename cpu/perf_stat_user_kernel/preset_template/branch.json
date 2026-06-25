@@ -2,13 +2,11 @@
   "preset_name": "Branch Predictor Analysis",
   "metrics": [
     {
-      "name": "IPC (Ins/Ciclo)",
+      "name": "IPC (Ins/Cycle)",
       "formula": "PAPI_TOT_INS / PAPI_TOT_CYC",
       "format": "{val:.3f}",
       "thresholds": [
-        {"min": 3.5, "tag": "✓ eccellente (Zen5 max ~4)"},
-        {"min": 1.0, "tag": "✓ buono"},
-        {"min": 0.0, "tag": "⚠ pipeline-bound (< 1.0)"}
+        {"min": 0.0, "tag": "Pipeline-bound"}
       ]
     },
     {
@@ -16,9 +14,7 @@
       "formula": "(PAPI_BR_MSP / PAPI_BR_INS) * 100",
       "format": "{val:.2f}%",
       "thresholds": [
-        {"min": 5.0, "tag": "⚠ branch-bound (> 5%)"},
-        {"min": 1.0, "tag": "→ accettabile"},
-        {"min": 0.0, "tag": "✓ basso"}
+        {"min": 5.0, "tag": "Branch-bound"}
       ]
     },
     {
@@ -29,3 +25,4 @@
     }
   ]
 }
+

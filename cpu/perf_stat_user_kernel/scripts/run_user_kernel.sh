@@ -16,15 +16,10 @@
 # =============================================================================
 set -euo pipefail
 
-# ---- Colors -----------------------------------------------------------------
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-NC='\033[0m'
-ok() { echo -e "${GREEN}[OK]${NC}  $*"; }
-warn() { echo -e "${YELLOW}[WARN]${NC} $*"; }
-err() { echo -e "${RED}[ERR]${NC}  $*"; }
-info() { echo -e "$*"; }
+ok() { echo "[OK]   $*"; }
+warn() { echo "[WARN] $*"; }
+err() { echo "[ERR]  $*"; }
+info() { echo "$*"; }
 
 # ---- Default Values ---------------------------------------------------------
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -57,7 +52,7 @@ while [[ $# -gt 0 ]]; do
   --event-*)
     idx="${1#--event-}"
     if ! [[ "$idx" =~ ^[1-9]$|^10$ ]]; then
-      err "Invalid event index: $idx (deve essere 1..10)"
+      err "Invalid event index: $idx (must be 1..10)"
       exit 1
     fi
     EVENT_NAMES[$idx]="$2"
@@ -83,24 +78,29 @@ if [[ ! -x "$EXE" ]]; then
 fi
 
 # Resolve paths to absolute format portably
+# Create directories first to ensure they exist before resolving absolute paths
+mkdir -p "$OUT_DIR"
+mkdir -p "$LOG_DIR"
+
 OUT_DIR="$(readlink -f "${OUT_DIR}")"
 LOG_DIR="$(readlink -f "${LOG_DIR}")"
 LOG_FILE="${LOG_DIR}/run_user_kernel.log"
-
-mkdir -p "$OUT_DIR"
-mkdir -p "$LOG_DIR"
 > "$LOG_FILE"
 
 # ---- Export Event Names into Environment -------------------------------------
 for i in $(seq 1 10); do
-  if [[ -n "${EVENT_NAMES[$i]+set}" ]]; then
+  if [[ -n "${EVENT_NAMES[$i]-}" ]]; then
     export "ACA_USER_EVENT_${i}_NAME=${EVENT_NAMES[$i]}"
   fi
 done
 
 # ---- Output Paths for Double Instrumentation Cleanliness --------------------
 export ACA_TRACE_USER_OUT="${OUT_DIR}/trace_user_events.json"
-export ACA_PAPI_REPORT_OUT="${OUT_DIR}/kpi_hotspots.json"
+
+# Prevent PAPI tracer from polluting the workspace, redirect to logs and clean up on exit
+IGNORED_PAPI="${LOG_DIR}/kpi_hotspots_ignored.json"
+export ACA_PAPI_REPORT_OUT="${IGNORED_PAPI}"
+trap 'rm -f "${IGNORED_PAPI}"' EXIT
 
 # ---- Banner -----------------------------------------------------------------
 echo ""

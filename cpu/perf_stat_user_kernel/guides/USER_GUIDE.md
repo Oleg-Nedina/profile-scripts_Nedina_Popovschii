@@ -8,8 +8,8 @@ This guide details how to integrate and use the CPU profiling module (supporting
 
 The CPU profiling suite consists of two primary instrumentation components designed to analyze execution timelines and hardware counters:
 
-1. **User Events (Perfetto Integration)**: Enabled via [aca_user_events.hpp](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/include/aca_user_events.hpp) and [aca_user_events.cpp](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/src/aca_user_events.cpp). This library captures the timeline duration of custom user-defined execution slices. The output is generated as a JSON file in Chrome Trace Event format, which can be visualized graphically on the Perfetto UI website.
-2. **PAPI Hotspot Profiling**: Enabled via [aca_papi_tracer.hpp](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/include/aca_papi_tracer.hpp) and [aca_papi_tracer.cpp](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/src/aca_papi_tracer.cpp). This library interfaces with the Performance Application Programming Interface (PAPI) to read hardware PMU counters (such as CPU cycles, instructions, cache misses, and branch mispredictions) during critical computational kernels.
+1. **User Events (Perfetto Integration)**: Enabled via [aca_user_events.hpp](../include/aca_user_events.hpp) and [aca_user_events.cpp](../src/aca_user_events.cpp). This library captures the timeline duration of custom user-defined execution slices. The output is generated as a JSON file in Chrome Trace Event format, which can be visualized graphically on the Perfetto UI website.
+2. **PAPI Hotspot Profiling**: Enabled via [aca_papi_tracer.hpp](../include/aca_papi_tracer.hpp) and [aca_papi_tracer.cpp](../src/aca_papi_tracer.cpp). This library interfaces with the Performance Application Programming Interface (PAPI) to read hardware PMU counters (such as CPU cycles, instructions, cache misses, and branch mispredictions) during critical computational kernels.
 
 ---
 
@@ -19,7 +19,7 @@ To profile specific sections of the C++ codebase, you must include the appropria
 
 ### 2.1. Profiling with User Events
 
-To track execution phases on a timeline, include [aca_user_events.hpp](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/include/aca_user_events.hpp) and use the following macros:
+To track execution phases on a timeline, include [aca_user_events.hpp](../include/aca_user_events.hpp) and use the following macros:
 
 1. **ACA_USER_EVENT_START(id, default_name)**: Starts tracing an event slice. The `id` parameter must be an integer between 1 and 10. The `default_name` parameter serves as a fallback name.
 2. **ACA_USER_EVENT_STOP(id)**: Stops tracing the event slice with the corresponding `id` value.
@@ -39,7 +39,7 @@ void process_data() {
 
 ### 2.2. Profiling with PAPI
 
-To record hardware performance counters in a hot loop, include [aca_papi_tracer.hpp](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/include/aca_papi_tracer.hpp) and use the following macros:
+To record hardware performance counters in a hot loop, include [aca_papi_tracer.hpp](../include/aca_papi_tracer.hpp) and use the following macros:
 
 1. **ACA_PAPI_KNL_START(id, default_name)**: Starts counting hardware events. The `id` parameter must be an integer between 1 and 10. The `default_name` parameter serves as a fallback name.
 2. **ACA_PAPI_KNL_STOP(id)**: Stops counting hardware events for the corresponding `id` value and aggregates results.
@@ -155,7 +155,7 @@ Note: The directory layout displayed above is a generic example included solely 
 
 ### 3.3. Specific Integration in muDock
 
-To automate path discovery across different local workspace clones, we modify the root CMake configuration file [CMakeLists.txt](file:///home/olly/UNI/progetto_aca/muDock/CMakeLists.txt) to automatically locate the profiling directory inside sibling candidate paths:
+To automate path discovery across different local workspace clones, we modify the root CMake configuration file [CMakeLists.txt](../../../../muDock/CMakeLists.txt) to automatically locate the profiling directory inside sibling candidate paths:
 
 ```cmake
 # ##############################################################################
@@ -208,7 +208,7 @@ if(MUDOCK_ENABLE_USER_EVENTS OR MUDOCK_ENABLE_PAPI)
 endif()
 ```
 
-Then, modify the core library build file [CMakeLists.txt](file:///home/olly/UNI/progetto_aca/muDock/mudock/CMakeLists.txt) to link the generated static library:
+Then, modify the core library build file [CMakeLists.txt](../../../../muDock/mudock/CMakeLists.txt) to link the generated static library:
 
 ```cmake
 # perfetto_aca dependency
@@ -245,55 +245,34 @@ When compiling any instrumented application, adhere to the following steps:
 
 ### 4.2. Specific Compilation Steps for muDock
 
-To configure the muDock workspace under the local Spack package environment, follow these steps:
+To configure and compile the muDock workspace with profiling enabled:
 
-1. **Load the Spack Environment**:
-   Initialize Spack and activate the customized Zen 5 profile:
+1. **Configure via GCC Compiler**:
+   Use GCC for standard profiling runs:
    ```bash
-   source ${SPACK_ROOT:-$HOME/spack}/share/spack/setup-env.sh
-   spack env activate mudock_zen5
-   ```
-2. **Configure via GCC-14 Compiler**:
-   Use GCC-14 for standard CPU profiling runs:
-   ```bash
-   cd ~/UNI/progetto_aca/muDock
+   cd ../muDock
    mkdir -p build && cd build
-   $(spack location -i cmake@3.31.11)/bin/cmake .. \
-     -DCMAKE_C_COMPILER=gcc-14 \
-     -DCMAKE_CXX_COMPILER=g++-14 \
-     -DCMAKE_POLICY_DEFAULT_CMP0144=NEW \
-     -DMUDOCK_ENABLE_SYCL=OFF \
+   cmake .. \
      -DMUDOCK_ENABLE_OMP=ON \
-     -DMUDOCK_ENABLE_GH=ON \
-     -DMUDOCK_GPU_ARCHITECTURES="none" \
-     -DMUDOCK_CPU_TARGET="native" \
      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
      -DMUDOCK_ENABLE_USER_EVENTS=ON \
-     -DMUDOCK_ENABLE_PAPI=ON \
-     -DCMAKE_PREFIX_PATH="$(spack location -i boost@1.90.0);$(spack location -i highway);$(spack location -i openbabel)"
+     -DMUDOCK_ENABLE_PAPI=ON
    ```
-3. **Configure via Clang-17 Compiler**:
-   Use Clang-17 to support full fine-grained OpenMP profiling:
+2. **Configure via Clang Compiler**:
+   Use Clang to support OpenMP profiling:
    ```bash
-   cd ~/UNI/progetto_aca/muDock
+   cd ../muDock
    rm -rf build && mkdir build && cd build
-   $(spack location -i cmake@3.31.11)/bin/cmake .. \
-     -DCMAKE_C_COMPILER=clang-17 \
-     -DCMAKE_CXX_COMPILER=clang++-17 \
-     -DCMAKE_POLICY_DEFAULT_CMP0144=NEW \
-     -DCMAKE_MODULE_PATH="$(pwd)/fake_cmake" \
-     -DMUDOCK_ENABLE_SYCL=OFF \
+   cmake .. \
+     -DCMAKE_C_COMPILER=clang \
+     -DCMAKE_CXX_COMPILER=clang++ \
      -DMUDOCK_ENABLE_OMP=ON \
-     -DMUDOCK_ENABLE_GH=ON \
-     -DMUDOCK_GPU_ARCHITECTURES="none" \
-     -DMUDOCK_CPU_TARGET="native" \
      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
      -DMUDOCK_ENABLE_USER_EVENTS=ON \
-     -DMUDOCK_ENABLE_PAPI=ON \
-     -DCMAKE_PREFIX_PATH="$(spack location -i boost@1.90.0);$(spack location -i highway);$(spack location -i openbabel)"
+     -DMUDOCK_ENABLE_PAPI=ON
    ```
-4. **Compile the Targets**:
-   Run the compilation in parallel using all available cores:
+3. **Compile the Targets**:
+   Run the compilation in parallel:
    ```bash
    make -j$(nproc)
    ```
@@ -334,10 +313,10 @@ export ACA_PAPI_KNL_2_NAME="ComputeKernel"
 
 ### 5.2. General Script-Based Orchestration
 
-Instead of exporting environment variables manually, you can use the orchestrator shell scripts [run_user_kernel.sh](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/scripts/run_user_kernel.sh) and [run_papi.sh](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/scripts/run_papi.sh) to handle the variables automatically via command line parameters.
+Instead of exporting environment variables manually, you can use the orchestrator shell scripts [run_user_kernel.sh](../scripts/run_user_kernel.sh) and [run_papi.sh](../scripts/run_papi.sh) to handle the variables automatically via command line parameters.
 
 1. **User Events Orchestration**:
-   Use [run_user_kernel.sh](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/scripts/run_user_kernel.sh) to pass the executable path, target application arguments, output directory, and custom event names:
+   Use [run_user_kernel.sh](../scripts/run_user_kernel.sh) to pass the executable path, target application arguments, output directory, and custom event names:
    ```bash
    ./cpu/perf_stat_user_kernel/scripts/run_user_kernel.sh \
      --exe ./my_program \
@@ -347,7 +326,7 @@ Instead of exporting environment variables manually, you can use the orchestrato
      --event-2 "Process"
    ```
 2. **PAPI Hotspot Orchestration**:
-   Use [run_papi.sh](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/scripts/run_papi.sh) to pass the executable path, target application arguments, output directory, custom event names, or specific event presets (such as `ipc`, `cache`, `branch`, or `simd`):
+   Use [run_papi.sh](../scripts/run_papi.sh) to pass the executable path, target application arguments, output directory, custom event names, or specific event presets (such as `ipc`, `cache`, `branch`, or `simd`):
    ```bash
    ./cpu/perf_stat_user_kernel/scripts/run_papi.sh \
      --exe ./my_program \
@@ -359,50 +338,47 @@ Instead of exporting environment variables manually, you can use the orchestrato
 
 ### 5.3. Concrete Execution Examples with muDock
 
-You can run muDock profiling either by manually exporting variables or by using the script-based parameters.
-
 1. **Manual Export Approach**:
-   ```bash
-   cd ~/UNI/progetto_aca/muDock
+    ```bash
+    cd ../muDock
 
-   # Configure User Events Settings
-   export ACA_USER_EVENT_1_NAME="PipelineDocking"
-   export ACA_TRACE_USER_OUT="traces/trace_user_events.json"
+    # Configure User Events Settings
+    export ACA_USER_EVENT_1_NAME="PipelineDocking"
+    export ACA_TRACE_USER_OUT="traces/trace_user_events.json"
 
-   # Configure PAPI Settings
-   export ACA_PAPI_EVENTS="PAPI_TOT_CYC,PAPI_TOT_INS,PAPI_L3_TCM,PAPI_BR_MSP"
-   export ACA_PAPI_KNL_1_NAME="CalcEnergy"
-   export ACA_PAPI_REPORT_OUT="traces/kpi_hotspots.txt"
+    # Configure PAPI Settings
+    export ACA_PAPI_EVENTS="PAPI_TOT_CYC,PAPI_TOT_INS,PAPI_L3_TCM,PAPI_BR_MSP"
+    export ACA_PAPI_KNL_1_NAME="CalcEnergy"
+    export ACA_PAPI_REPORT_OUT="traces/kpi_hotspots.txt"
 
-   # Run muDock with 12-column ligand
-   ./build/application/muDock \
-     --protein data/1fkb/1fkb_protein.pdb \
-     --ligand  data/1fkb/1fkb_ligand.mol2 \
-     --use CPP:CPU:0 \
-     --population 100 \
-     --generations 100 \
-     --seed 42
-   ```
+    # Run muDock
+    ./build/application/muDock \
+      --protein data/1fkb/1fkb_protein.pdb \
+      --ligand  data/1fkb/ligands100_12col.adtmol2 \
+      --use CPP:CPU:0-3 \
+      --search genetic \
+      --population 100 \
+      --generations 100 \
+      --seed 42
+    ```
 2. **Script-Based Parameter Approach**:
-   Run the orchestrator scripts directly from the repository root, passing parameters to configure all variables dynamically:
-   ```bash
-   cd ~/UNI/progetto_aca/profile-scripts_Nedina_Popovschii
+    Run the orchestrator scripts directly from the repository root:
+    ```bash
+    # Run User Events timeline profiling
+    ./cpu/perf_stat_user_kernel/scripts/run_user_kernel.sh \
+      --exe ../muDock/build/application/muDock \
+      --args "--protein ../muDock/data/1fkb/1fkb_protein.pdb --ligand ../muDock/data/1fkb/ligands100_12col.adtmol2 --use CPP:CPU:0-3 --search genetic --population 100 --generations 100 --seed 42" \
+      --out-dir cpu/perf_stat_user_kernel/traces/user_events \
+      --event-1 "PipelineDocking"
 
-   # Run User Events timeline profiling
-   ./cpu/perf_stat_user_kernel/scripts/run_user_kernel.sh \
-     --exe ../muDock/build/application/muDock \
-     --args "--protein ../muDock/data/1fkb/1fkb_protein.pdb --ligand ../muDock/data/1fkb/1fkb_ligand.mol2 --use CPP:CPU:0 --population 100 --generations 100 --seed 42" \
-     --out-dir cpu/perf_stat_user_kernel/traces/user_events \
-     --event-1 "PipelineDocking"
-
-   # Run PAPI hardware counter profiling
-   ./cpu/perf_stat_user_kernel/scripts/run_papi.sh \
-     --exe ../muDock/build/application/muDock \
-     --args "--protein ../muDock/data/1fkb/1fkb_protein.pdb --ligand ../muDock/data/1fkb/1fkb_ligand.mol2 --use CPP:CPU:0 --population 100 --generations 100 --seed 42" \
-     --out-dir cpu/perf_stat_user_kernel/traces/papi \
-     --events "PAPI_TOT_CYC,PAPI_TOT_INS,PAPI_L3_TCM,PAPI_BR_MSP" \
-     --knl-1 "CalcEnergy"
-   ```
+    # Run PAPI hardware counter profiling
+    ./cpu/perf_stat_user_kernel/scripts/run_papi.sh \
+      --exe ../muDock/build/application/muDock \
+      --args "--protein ../muDock/data/1fkb/1fkb_protein.pdb --ligand ../muDock/data/1fkb/ligands100_12col.adtmol2 --use CPP:CPU:0-3 --search genetic --population 100 --generations 100 --seed 42" \
+      --out-dir cpu/perf_stat_user_kernel/traces/papi \
+      --events "PAPI_TOT_CYC,PAPI_TOT_INS,PAPI_L3_TCM,PAPI_BR_MSP" \
+      --knl-1 "CalcEnergy"
+    ```
 
 ### 5.4. Checking the Trace Results
 

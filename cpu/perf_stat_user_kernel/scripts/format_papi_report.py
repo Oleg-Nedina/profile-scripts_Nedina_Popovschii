@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+@file format_papi_report.py
+@brief Formats raw PAPI JSON profile output into structured professional English text reports.
+@details Evaluates custom hardware metric formulas based on threshold criteria (e.g., IPC, cache misses, branch misses, SIMD utilization) at both global and per-thread levels.
+"""
 import os
 import sys
 import json
@@ -36,13 +41,11 @@ def get_fallback_template(events):
     metrics = []
     if "PAPI_TOT_INS" in events and "PAPI_TOT_CYC" in events:
         metrics.append({
-            "name": "IPC (Ins/Ciclo)",
+            "name": "IPC (Ins/Cycle)",
             "formula": "PAPI_TOT_INS / PAPI_TOT_CYC",
             "format": "{val:.3f}",
             "thresholds": [
-                {"min": 3.5, "tag": "✓ eccellente (Zen5 max ~4)"},
-                {"min": 1.0, "tag": "✓ buono"},
-                {"min": 0.0, "tag": "⚠ pipeline-bound (< 1.0)"}
+                {"min": 0.0, "tag": "Pipeline-bound"}
             ]
         })
     return {
@@ -64,7 +67,7 @@ def main():
         with open(args.json, "r") as f:
             data = json.load(f)
     except Exception as e:
-        print(f"[format_report] Errore nel caricamento del file JSON '{args.json}': {e}", file=sys.stderr)
+        print(f"[format_report] Error loading JSON file '{args.json}': {e}", file=sys.stderr)
         sys.exit(1)
 
     events = data.get("events", [])
@@ -80,7 +83,7 @@ def main():
                 with open(template_path, "r") as f:
                     template = json.load(f)
             except Exception as e:
-                print(f"[format_report] Warning: Errore nel caricare il template {template_path}: {e}", file=sys.stderr)
+                print(f"[format_report] Warning: Error loading template {template_path}: {e}", file=sys.stderr)
 
     if template is None:
         template = get_fallback_template(events)
@@ -88,12 +91,12 @@ def main():
     # Begin formatting report
     lines = []
     lines.append("="*80)
-    lines.append("       REPORT METRICHE HARDWARE PAPI — KERNEL-LEVEL PROFILING")
+    lines.append("       PAPI HARDWARE METRICS REPORT — KERNEL-LEVEL PROFILING")
     lines.append("="*80)
     lines.append(f"  Hardware : {hardware.get('model', 'N/A')}")
     lines.append(f"  PAPI     : {hardware.get('papi_version', 'N/A')}")
     lines.append(f"  Preset   : {template.get('preset_name', 'N/A')}")
-    lines.append(f"  Contatori: " + ", ".join(events))
+    lines.append(f"  Counters : " + ", ".join(events))
     lines.append("="*80)
     lines.append("")
 
@@ -103,14 +106,14 @@ def main():
         lines.append(f"│{title:<78}│")
         lines.append("├" + "─"*78 + "┤")
         
-        # 1. SEZIONE GLOBALE
-        lines.append("│  1. SEZIONE GLOBALE (Aggregata per tutti i thread)                           │")
-        lines.append(f"│      Invocazioni:                                    {k.get('total_calls'):<24}│")
+        # 1. GLOBAL SECTION
+        lines.append("│  1. GLOBAL SECTION (Aggregated across all threads)                           │")
+        lines.append(f"│      Invocations:                                    {k.get('total_calls'):<24}│")
         time_ms = k.get("total_time_us", 0) / 1000.0
-        lines.append(f"│      Tempo totale (ms):                            {time_ms:<26.2f}│")
-        lines.append(f"│      Thread partecipanti:                             {k.get('thread_count'):<23}│")
+        lines.append(f"│      Total Time (ms):                              {time_ms:<26.2f}│")
+        lines.append(f"│      Active Threads:                                  {k.get('thread_count'):<23}│")
         lines.append("│                                                                              │")
-        lines.append("│  Contatori Hardware (Grezzi):                                                │")
+        lines.append("│  Hardware Counters (Raw):                                                    │")
         
         # Mapping events to aggregate values
         agg_vals = k.get("aggregated_counters", [])
@@ -147,13 +150,13 @@ def main():
 
         if derived_lines:
             lines.append("│                                                                              │")
-            lines.append("│  Metriche Derivate:                                                          │")
+            lines.append("│  Derived Metrics:                                                            │")
             for dl in derived_lines:
                 lines.append(f"│{dl:<78}│")
 
-        # 2. SOTTOSEZIONE PER THREAD
+        # 2. THREAD SUBSECTION
         lines.append("├" + "─"*78 + "┤")
-        lines.append("│  2. SOTTOSEZIONE PER THREAD (Dettaglio per singolo thread)                   │")
+        lines.append("│  2. THREAD SUBSECTION (Detail per individual thread)                         │")
         
         threads = k.get("threads", [])
         for t_idx, t in enumerate(threads):
@@ -164,8 +167,8 @@ def main():
             t_time_ms = t.get("time_us", 0) / 1000.0
             
             lines.append(f"│  Thread TID {t_tid:<65}│")
-            lines.append(f"│      Invocazioni: {t_calls:<15} Tempo (ms): {t_time_ms:<32.2f}│")
-            lines.append("│      Contatori Hardware (Grezzi):                                            │")
+            lines.append(f"│      Invocations: {t_calls:<15} Time (ms): {t_time_ms:<33.2f}│")
+            lines.append("│      Hardware Counters (Raw):                                                │")
             
             t_vals = t.get("counters", [])
             t_event_map = {}
@@ -199,7 +202,7 @@ def main():
                         t_derived_lines.append(f"          {m.get('name'):<30} : {formatted_val:<12}{tag}")
 
             if t_derived_lines:
-                lines.append("│      Metriche Derivate:                                                      │")
+                lines.append("│      Derived Metrics:                                                        │")
                 for tdl in t_derived_lines:
                     lines.append(f"│{tdl:<78}│")
 
@@ -211,9 +214,9 @@ def main():
         os.makedirs(os.path.dirname(args.out), exist_ok=True)
         with open(args.out, "w") as f:
             f.write("\n".join(lines) + "\n")
-        print(f"[format_report] ✓ Report formattato salvato in: {args.out}")
+        print(f"[format_report] Formatted report saved to: {args.out}")
     except Exception as e:
-        print(f"[format_report] Errore nello scrivere il file di report '{args.out}': {e}", file=sys.stderr)
+        print(f"[format_report] Error writing report file '{args.out}': {e}", file=sys.stderr)
         sys.exit(1)
 
 if __name__ == "__main__":

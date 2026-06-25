@@ -50,7 +50,7 @@ Run the script from the root directory of the `profile-scripts` repository:
 
 ## Targeted Example: Profiling `muDock`
 
-To profile `muDock` using `base_converter.sh`, make sure you have compiled the `muDock` binary first (refer to [compilazione.md](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/utilitis/compilazione.md)).
+To profile `muDock` using `base_converter.sh`, make sure you have compiled the `muDock` binary first.
 
 ### 1. Execution Command
 

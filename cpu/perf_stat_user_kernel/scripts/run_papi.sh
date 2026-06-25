@@ -21,48 +21,18 @@
 #                             full   -> PAPI_TOT_CYC,PAPI_TOT_INS,PAPI_L1_DCM,PAPI_L2_DCM,PAPI_BR_MSP,PAPI_BR_PRC
 #   --knl-N NAME            Assign name NAME to instrumented kernel N (N from 1 to 10)
 #                           Example: --knl-1 "CalcEnergy" --knl-2 "GA_Search"
-#   --list-events           List all supported hardware events on AMD Zen 5
 #   --no-paranoid-check     Disable warning checks for perf_event_paranoid
 #
 # Prerequisites:
 #   sudo sysctl -w kernel.perf_event_paranoid=-1
-#   source ./scripts/setup_papi.sh
 # =============================================================================
 set -euo pipefail
 
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-CYAN='\033[0;36m'
-NC='\033[0m'
-ok() { echo -e "${GREEN}[OK]${NC}  $*"; }
-warn() { echo -e "${YELLOW}[WARN]${NC} $*"; }
-err() { echo -e "${RED}[ERR]${NC}  $*"; }
-info() { echo -e "${CYAN}[INFO]${NC} $*"; }
+ok() { echo "[OK]   $*"; }
+warn() { echo "[WARN] $*"; }
+err() { echo "[ERR]  $*"; }
+info() { echo "[INFO] $*"; }
 
-# ============================================================================
-# PAPI Event List for AMD Zen 5 (queried via papi_avail --paranoid=-1)
-# Used for the interactive --list-events display
-# ============================================================================
-ZEN5_EVENTS=(
-  "PAPI_TOT_CYC:Total CPU clock cycles (base event, always available)"
-  "PAPI_TOT_INS:Instructions completed (base event, always available)"
-  "PAPI_L1_DCM:L1 data cache misses  → L1 MPKI"
-  "PAPI_L2_DCM:L2 data cache misses  → L2 MPKI (proxy for memory bottlenecks)"
-  "PAPI_L2_TCM:L2 total cache misses (derived event)"
-  "PAPI_BR_MSP:Branch mispredictions → Branch Miss Rate"
-  "PAPI_BR_PRC:Branch instructions predicted correctly (derived event)"
-  "PAPI_BR_INS:Total branch instructions"
-  "PAPI_BR_CN:Conditional branch instructions"
-  "PAPI_TLB_DM:Data TLB misses       → TLB MPKI"
-  "PAPI_VEC_INS:Vector/SIMD instructions → Vectorization Rate"
-  "PAPI_FP_OPS:Floating point operations"
-  "PAPI_FP_INS:Floating point instructions (derived event)"
-  "PAPI_FMA_INS:FMA instructions completed (derived event)"
-  "PAPI_L1_DCA:L1 data cache accesses"
-  "PAPI_L2_DCH:L2 data cache hits"
-  "PAPI_L2_DCR:L2 data cache reads"
-)
 
 # ============================================================================
 # Predefined Event Presets
@@ -88,35 +58,10 @@ PRESET=""
 SKIP_PARANOID_CHECK=0
 
 # ============================================================================
-# Help & List functions
+# Help functions
 # ============================================================================
 usage() {
-  sed -n '2,30p' "$0" | sed 's/^# \?//'
-  exit 0
-}
-
-list_events() {
-  echo ""
-  echo "  PAPI Events Verified on AMD Zen 5 (Ryzen AI 7 PRO 350)"
-  echo "  (Checked with perf_event_paranoid=-1 under PAPI 7.2.0)"
-  echo ""
-  printf "  %-20s %s\n" "EVENT" "DESCRIPTION"
-  printf "  %-20s %s\n" "-----" "-----------"
-  for entry in "${ZEN5_EVENTS[@]}"; do
-    name="${entry%%:*}"
-    desc="${entry#*:}"
-    printf "  ${GREEN}%-20s${NC} %s\n" "$name" "$desc"
-  done
-  echo ""
-  echo "  ❌ NOT Available: PAPI_L3_TCM (L3 events are not mapped on Zen 5 via PAPI)"
-  echo ""
-  echo "  Predefined Presets:"
-  echo "    ipc    → $PRESET_IPC"
-  echo "    cache  → $PRESET_CACHE"
-  echo "    branch → $PRESET_BRANCH"
-  echo "    simd   → $PRESET_SIMD"
-  echo "    full   → $PRESET_FULL"
-  echo ""
+  sed -n '2,28p' "$0" | sed 's/^# \?//'
   exit 0
 }
 
@@ -145,7 +90,6 @@ while [[ $# -gt 0 ]]; do
     SKIP_PARANOID_CHECK=1
     shift
     ;;
-  --list-events) list_events ;;
   --help | -h) usage ;;
   --preset)
     PRESET="$2"
@@ -197,29 +141,34 @@ if [[ $SKIP_PARANOID_CHECK -eq 0 ]]; then
   if [[ "$PARANOID" != "-1" ]]; then
     warn "kernel.perf_event_paranoid=$PARANOID — hardware PMU counters may fail."
     warn "Unlock CPU PMUs using: sudo sysctl -w kernel.perf_event_paranoid=-1"
-    warn "Or load the environment: source ./scripts/setup_papi.sh"
+    warn "Or ensure PAPI is loaded and CPU PMUs are unlocked."
     warn "Proceeding execution... (use --no-paranoid-check to silence)"
   fi
 fi
 
 # Resolve paths to absolute format portably
+# Create directories first to ensure they exist before resolving absolute paths
+mkdir -p "$OUT_DIR"
+mkdir -p "$LOG_DIR"
+
 OUT_DIR="$(readlink -f "${OUT_DIR}")"
 LOG_DIR="$(readlink -f "${LOG_DIR}")"
 LOG_FILE="${LOG_DIR}/run_papi.log"
-
-mkdir -p "$OUT_DIR"
-mkdir -p "$LOG_DIR"
 > "$LOG_FILE"
+
+# Prevent user event tracer from polluting the workspace, redirect to logs and clean up on exit
+IGNORED_TRACE="${LOG_DIR}/trace_user_events_ignored.json"
+export ACA_TRACE_USER_OUT="${IGNORED_TRACE}"
+trap 'rm -f "${IGNORED_TRACE}"' EXIT
 
 # ============================================================================
 # Export Environment Variables
 # ============================================================================
 export ACA_PAPI_EVENTS="$PAPI_EVENTS"
 export ACA_PAPI_REPORT_OUT="${OUT_DIR}/kpi_hotspots.json"
-export ACA_TRACE_USER_OUT="${OUT_DIR}/trace_user_events.json"
 
 for i in $(seq 1 10); do
-  if [[ -n "${KNL_NAMES[$i]+set}" ]]; then
+  if [[ -n "${KNL_NAMES[$i]-}" ]]; then
     export "ACA_PAPI_KNL_${i}_NAME=${KNL_NAMES[$i]}"
   fi
 done

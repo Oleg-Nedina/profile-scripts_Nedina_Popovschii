@@ -28,7 +28,6 @@ perf_stat_user_kernel/
 │   └── aca_papi_tracer.cpp   # PAPI manager, validation, and JSON export
 │
 └── scripts/                  # Orchestrator and post-processing scripts
-    ├── setup_papi.sh         # PAPI/Spack environment initialization
     ├── run_user_kernel.sh    # Orchestration script for User Events tracing
     ├── run_papi.sh           # Orchestration script for PAPI tracing
     ├── run_hpctoolkit.sh     # Orchestration script for HPCToolkit profiling
@@ -75,36 +74,22 @@ void calc_energy() {
 
 ## 2. Configuration and Compilation of muDock
 
-To compile with User Events and PAPI profiling enabled, load the Spack environment and configure CMake with the appropriate build options:
+To compile with User Events and PAPI profiling enabled, configure CMake targeting the appropriate flags:
 
 ```bash
 # 1. Navigate to the muDock folder
-cd /home/olly/UNI/progetto_aca/muDock
+cd ../muDock
 
 # 2. Create and access the build folder
 mkdir -p build && cd build
 
-# 3. Activate the local Spack environment
-source /home/olly/spack/share/spack/setup-env.sh
-spack env activate mudock_zen5
-
-# 4. Configure CMake with profiling flags
-$(spack location -i cmake@3.31.11)/bin/cmake .. \
-  -DCMAKE_C_COMPILER=gcc-14 \
-  -DCMAKE_CXX_COMPILER=g++-14 \
-  -DCMAKE_POLICY_DEFAULT_CMP0144=NEW \
-  -DCMAKE_MODULE_PATH="$(pwd)/fake_cmake" \
-  -DMUDOCK_ENABLE_SYCL=OFF \
+# 3. Configure CMake with profiling flags
+cmake .. \
   -DMUDOCK_ENABLE_OMP=ON \
-  -DMUDOCK_ENABLE_GH=ON \
-  -DMUDOCK_GPU_ARCHITECTURES="none" \
-  -DMUDOCK_CPU_TARGET="native" \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DMUDOCK_ENABLE_USER_EVENTS=ON \
-  -DMUDOCK_ENABLE_PAPI=ON \
-  -DCMAKE_PREFIX_PATH="$(spack location -i boost@1.90.0);$(spack location -i highway);$(spack location -i openbabel)"
+  -DMUDOCK_ENABLE_PAPI=ON
 
-# 5. Compile the project
+# 4. Compile the project
 make -j$(nproc)
 ```
 
@@ -116,13 +101,11 @@ All profiling script executions should be launched from the root directory of th
 
 ### A. User Events Profiling (Perfetto Timeline)
 
-The orchestrator script [run_user_kernel.sh](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/scripts/run_user_kernel.sh) configures the environment and executes the instrumented binary.
+The orchestrator script [run_user_kernel.sh](scripts/run_user_kernel.sh) configures the environment and executes the instrumented binary.
 
-Example execution using relative paths and targeting CPU implementation (`CPP:CPU:0-3`):
+Example execution:
 
 ```bash
-cd /home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii
-
 ./cpu/perf_stat_user_kernel/scripts/run_user_kernel.sh \
   --exe ../muDock/build/application/muDock \
   --args "--protein ../muDock/data/1fkb/1fkb_protein.pdb --ligand ../muDock/data/1fkb/ligands100_12col.adtmol2 --use CPP:CPU:0-3 --search genetic --population 100 --generations 100" \
@@ -141,14 +124,7 @@ Visualization: Open `https://ui.perfetto.dev/` in a web browser and upload the g
 
 ### B. Kernel Hotspots Profiling (PAPI)
 
-Before running the PAPI profiling tool, initialize the environment for your terminal session using [setup_papi.sh](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/scripts/setup_papi.sh):
-
-```bash
-cd /home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii
-source ./cpu/perf_stat_user_kernel/scripts/setup_papi.sh
-```
-
-Execute the profiling suite using [run_papi.sh](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/scripts/run_papi.sh). The orchestrator supports predefined event presets (`ipc`, `cache`, `branch`, `simd`, `full`) or custom event configurations:
+Execute the profiling suite using [run_papi.sh](scripts/run_papi.sh). The orchestrator supports predefined event presets (`ipc`, `cache`, `branch`, `simd`, `full`) or custom event configurations:
 
 1. **Execution with the SIMD/FP Preset**:
    ```bash
@@ -183,7 +159,7 @@ Execute the profiling suite using [run_papi.sh](file:///home/olly/UNI/progetto_a
 
 ### C. Statistical Sampling Profiling (HPCToolkit)
 
-The script [run_hpctoolkit.sh](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/scripts/run_hpctoolkit.sh) automates statistical sampling profiling. This method is non-intrusive and carries low execution overhead.
+The script [run_hpctoolkit.sh](scripts/run_hpctoolkit.sh) automates statistical sampling profiling. This method is non-intrusive and carries low execution overhead.
 
 It supports the `ipc`, `cache`, `branch`, `simd`, and `full` presets:
 
@@ -200,7 +176,7 @@ It supports the `ipc`, `cache`, `branch`, `simd`, and `full` presets:
    hpcviewer ./cpu/perf_stat_user_kernel/traces/hpctoolkit/database/
    ```
 
-For a detailed step-by-step description of macro profiling (Perfetto) and micro profiling (HPCToolkit), inspect [GUIDA_COMPLETA_PROFILING.md](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/GUIDA_COMPLETA_PROFILING.md). For installation and fast reports, inspect [ROADMAP_HPC.md](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/ROADMAP_HPC.md) and [GUIDA_HPCVIEWER.md](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/GUIDA_HPCVIEWER.md). For individual orchestrator script manuals, consult [guide_run_user_kernel.md](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/guides/guide_run_user_kernel.md), [guide_run_papi.md](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/guides/guide_run_papi.md), and [guide_run_hpctoolkit.md](file:///home/olly/UNI/progetto_aca/profile-scripts_Nedina_Popovschii/cpu/perf_stat_user_kernel/guides/guide_run_hpctoolkit.md).
+For a detailed step-by-step description of macro profiling (Perfetto) and micro profiling (HPCToolkit), inspect [GUIDA_COMPLETA_PROFILING.md](GUIDA_COMPLETA_PROFILING.md). For installation and fast reports, inspect [ROADMAP_HPC.md](ROADMAP_HPC.md) and [GUIDA_HPCVIEWER.md](GUIDA_HPCVIEWER.md). For individual orchestrator script manuals, consult [guide_run_user_kernel.md](guides/guide_run_user_kernel.md), [guide_run_papi.md](guides/guide_run_papi.md), and [guide_run_hpctoolkit.md](guides/guide_run_hpctoolkit.md).
 
 ---
 

@@ -24,11 +24,10 @@
 set -euo pipefail
 
 # ---- Colors -----------------------------------------------------------------
-GREEN='\033[0;32m'; YELLOW='\033[1;33m'; RED='\033[0;31m'; CYAN='\033[0;36m'; NC='\033[0m'
-ok()   { echo -e "${GREEN}[OK]${NC}   $*"; }
-warn() { echo -e "${YELLOW}[WARN]${NC} $*"; }
-err()  { echo -e "${RED}[ERR]${NC}  $*"; }
-info() { echo -e "${CYAN}[INFO]${NC} $*"; }
+ok()   { echo "[OK]   $*"; }
+warn() { echo "[WARN] $*"; }
+err()  { echo "[ERR]  $*"; }
+info() { echo "[INFO] $*"; }
 
 # ---- Presets ----------------------------------------------------------------
 PRESET_IPC="cycles,PAPI_TOT_INS"
@@ -92,17 +91,7 @@ if [[ ! -x "$EXE" ]]; then
     exit 1
 fi
 
-# ---- Load Spack Environment -------------------------------------------------
-if ! command -v hpcrun &>/dev/null; then
-    info "HPCToolkit not detected in PATH. Attempting to load Spack..."
-    SPACK_SETUP="${SPACK_ROOT:-$HOME/spack}/share/spack/setup-env.sh"
-    if [[ -f "$SPACK_SETUP" ]]; then
-        # shellcheck disable=SC1090
-        source "$SPACK_SETUP"
-        spack env activate mudock_zen5 2>/dev/null || warn "Failed to activate Spack environment 'mudock_zen5'."
-        spack load hpctoolkit 2>/dev/null || warn "Failed to load 'hpctoolkit' via Spack."
-    fi
-fi
+# ---- Verify HPCToolkit Availability -----------------------------------------
 
 # Verify required tools are available
 for tool in hpcrun hpcstruct hpcprof; do
@@ -113,12 +102,14 @@ for tool in hpcrun hpcstruct hpcprof; do
     fi
 done
 
-# Resolve absolute paths
-EXE_ABS=$(readlink -f "$EXE")
-SRC_DIR_ABS=$(readlink -f "$SRC_DIR")
+# Resolve paths to absolute format portably
+# Create directories first to ensure they exist before resolving absolute paths
 mkdir -p "$OUT_DIR"
 mkdir -p "$LOG_DIR"
 > "$LOG_FILE"
+
+EXE_ABS=$(readlink -f "$EXE")
+SRC_DIR_ABS=$(readlink -f "$SRC_DIR")
 OUT_DIR_ABS=$(readlink -f "$OUT_DIR")
 
 # HPCToolkit output directories
@@ -128,9 +119,12 @@ DATABASE_DIR="${OUT_DIR_ABS}/database"
 # Clean up previous runs
 rm -rf "$MEASUREMENTS_DIR" "$DATABASE_DIR"
 
-# ---- Export output paths to keep root directory clean -----------------------
-export ACA_TRACE_USER_OUT="${OUT_DIR_ABS}/trace_user_events.json"
-export ACA_PAPI_REPORT_OUT="${OUT_DIR_ABS}/kpi_hotspots.json"
+# ---- Redirection and cleanup of unwanted instrumentation trace files --------
+IGNORED_TRACE="${LOG_DIR}/trace_user_events_ignored.json"
+IGNORED_PAPI="${LOG_DIR}/kpi_hotspots_ignored.json"
+export ACA_TRACE_USER_OUT="${IGNORED_TRACE}"
+export ACA_PAPI_REPORT_OUT="${IGNORED_PAPI}"
+trap 'rm -f "${IGNORED_TRACE}" "${IGNORED_PAPI}"' EXIT
 
 # ---- Build hpcrun arguments -------------------------------------------------
 HPCRUN_ARGS=()

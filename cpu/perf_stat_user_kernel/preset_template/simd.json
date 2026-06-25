@@ -2,13 +2,11 @@
   "preset_name": "SIMD / Floating-Point Analysis",
   "metrics": [
     {
-      "name": "IPC (Ins/Ciclo)",
+      "name": "IPC (Ins/Cycle)",
       "formula": "PAPI_TOT_INS / PAPI_TOT_CYC",
       "format": "{val:.3f}",
       "thresholds": [
-        {"min": 3.5, "tag": "✓ eccellente (Zen5 max ~4)"},
-        {"min": 1.0, "tag": "✓ buono"},
-        {"min": 0.0, "tag": "⚠ pipeline-bound (< 1.0)"}
+        {"min": 0.0, "tag": "Pipeline-bound"}
       ]
     },
     {
@@ -16,8 +14,8 @@
       "formula": "(PAPI_VEC_INS / PAPI_TOT_INS) * 100",
       "format": "{val:.2f}%",
       "thresholds": [
-        {"min": 30.0, "tag": "✓ buona SIMD utilization"},
-        {"min": 0.0, "tag": "→ bassa SIMD utilization"}
+        {"min": 30.0, "tag": ""},
+        {"min": 0.0, "tag": "Low SIMD utilization"}
       ]
     },
     {
@@ -34,3 +32,4 @@
     }
   ]
 }
+

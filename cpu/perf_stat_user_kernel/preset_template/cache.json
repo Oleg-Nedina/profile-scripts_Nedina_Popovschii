@@ -2,13 +2,11 @@
   "preset_name": "Cache Hierarchy & Data Locality",
   "metrics": [
     {
-      "name": "IPC (Ins/Ciclo)",
+      "name": "IPC (Ins/Cycle)",
       "formula": "PAPI_TOT_INS / PAPI_TOT_CYC",
       "format": "{val:.3f}",
       "thresholds": [
-        {"min": 3.5, "tag": "✓ eccellente (Zen5 max ~4)"},
-        {"min": 1.0, "tag": "✓ buono"},
-        {"min": 0.0, "tag": "⚠ pipeline-bound (< 1.0)"}
+        {"min": 0.0, "tag": "Pipeline-bound"}
       ]
     },
     {
@@ -16,9 +14,7 @@
       "formula": "(PAPI_L1_DCM / PAPI_TOT_INS) * 1000",
       "format": "{val:.3f}",
       "thresholds": [
-        {"min": 50.0, "tag": "⚠ L1-bound (> 50 MPKI)"},
-        {"min": 10.0, "tag": "→ moderato"},
-        {"min": 0.0, "tag": "✓ basso"}
+        {"min": 50.0, "tag": "L1-bound"}
       ]
     },
     {
@@ -26,9 +22,7 @@
       "formula": "(PAPI_L2_DCM / PAPI_TOT_INS) * 1000",
       "format": "{val:.3f}",
       "thresholds": [
-        {"min": 10.0, "tag": "⚠ memory-bound (L2 miss > 10 MPKI)"},
-        {"min": 2.0, "tag": "→ moderato"},
-        {"min": 0.0, "tag": "✓ basso"}
+        {"min": 10.0, "tag": "Memory-bound"}
       ]
     },
     {
@@ -36,8 +30,7 @@
       "formula": "(PAPI_TLB_DM / PAPI_TOT_INS) * 1000",
       "format": "{val:.3f}",
       "thresholds": [
-        {"min": 1.0, "tag": "⚠ TLB pressure elevata"},
-        {"min": 0.0, "tag": "✓ bassa"}
+        {"min": 1.0, "tag": "High TLB Pressure"}
       ]
     }
   ]

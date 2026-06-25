@@ -297,5 +297,5 @@ print("    Open at:  https://ui.perfetto.dev/")
 print(f"      Drag:     {os.path.abspath(out_path)}")
 print()
 if len(valid) == 0:
-    print("  ⚠️   Unresolved symbols: see notes above on how to recompile.")
+    print("  [WARN] Unresolved symbols: see notes above on how to recompile.")
 print("━" * 62)

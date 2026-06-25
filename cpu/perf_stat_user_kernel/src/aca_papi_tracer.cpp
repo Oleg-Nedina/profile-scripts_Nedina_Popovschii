@@ -271,7 +271,7 @@ void PapiTracer::initPapi() {
     papi_supported_ = true;
 
     const PAPI_hw_info_t* hw = PAPI_get_hardware_info();
-    std::cerr << "[aca_papi] ✓ Initialized on "
+    std::cerr << "[aca_papi] Initialized on "
               << (hw ? hw->model_string : "unknown hardware")
               << "\n  Active counters (" << event_codes_.size() << "):";
     for (const auto& n : event_names_) std::cerr << "  " << n;
@@ -292,6 +292,7 @@ void PapiTracer::commitThreadRecords(std::vector<KernelRecord>& recs) {
 void PapiTracer::startKernel(int id, const char* /*default_name*/) {
     if (!papi_supported_ || id < 1 || id > kMaxKernels) return;
     const int idx = id - 1;
+    if (cached_names_[idx].empty()) return;
 
     if (!tl_guard.initialized)
         if (!tl_guard.setup(event_codes_)) return;
@@ -469,7 +470,7 @@ void PapiTracer::report(bool from_destructor) {
     out << "}\n";
 
     out.close();
-    std::cerr << "[aca_papi] ✓ JSON Report generated: " << path
+    std::cerr << "[aca_papi] JSON Report generated: " << path
               << " (" << kernel_ids.size() << " kernels, "
               << committed_records_.size() << " thread records)\n";
 }
