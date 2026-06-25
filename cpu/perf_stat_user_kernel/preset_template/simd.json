@@ -1,0 +1,36 @@
+{
+  "preset_name": "SIMD / Floating-Point Analysis",
+  "metrics": [
+    {
+      "name": "IPC (Ins/Ciclo)",
+      "formula": "PAPI_TOT_INS / PAPI_TOT_CYC",
+      "format": "{val:.3f}",
+      "thresholds": [
+        {"min": 3.5, "tag": "✓ eccellente (Zen5 max ~4)"},
+        {"min": 1.0, "tag": "✓ buono"},
+        {"min": 0.0, "tag": "⚠ pipeline-bound (< 1.0)"}
+      ]
+    },
+    {
+      "name": "Vectorization Rate (%)",
+      "formula": "(PAPI_VEC_INS / PAPI_TOT_INS) * 100",
+      "format": "{val:.2f}%",
+      "thresholds": [
+        {"min": 30.0, "tag": "✓ buona SIMD utilization"},
+        {"min": 0.0, "tag": "→ bassa SIMD utilization"}
+      ]
+    },
+    {
+      "name": "FP Ops / Instr (%)",
+      "formula": "(PAPI_FP_OPS / PAPI_TOT_INS) * 100",
+      "format": "{val:.2f}%",
+      "thresholds": []
+    },
+    {
+      "name": "FP Instr / Total Instr (%)",
+      "formula": "(PAPI_FP_INS / PAPI_TOT_INS) * 100",
+      "format": "{val:.2f}%",
+      "thresholds": []
+    }
+  ]
+}

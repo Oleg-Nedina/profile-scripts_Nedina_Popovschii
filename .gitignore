@@ -46,3 +46,10 @@ build/
 *.x
 
 out
+utilitis/compile_local.sh
+
+# Profiling outputs, logs, and temporary files
+**/traces/
+**/logs/
+kpi_hotspots.json
+trace_user_events.json

@@ -1,0 +1,45 @@
+{
+  "preset_name": "Full Profiling Summary",
+  "metrics": [
+    {
+      "name": "IPC (Ins/Ciclo)",
+      "formula": "PAPI_TOT_INS / PAPI_TOT_CYC",
+      "format": "{val:.3f}",
+      "thresholds": [
+        {"min": 3.5, "tag": "✓ eccellente (Zen5 max ~4)"},
+        {"min": 1.0, "tag": "✓ buono"},
+        {"min": 0.0, "tag": "⚠ pipeline-bound (< 1.0)"}
+      ]
+    },
+    {
+      "name": "L1 MPKI (miss/KIns)",
+      "formula": "(PAPI_L1_DCM / PAPI_TOT_INS) * 1000",
+      "format": "{val:.3f}",
+      "thresholds": [
+        {"min": 50.0, "tag": "⚠ L1-bound (> 50 MPKI)"},
+        {"min": 10.0, "tag": "→ moderato"},
+        {"min": 0.0, "tag": "✓ basso"}
+      ]
+    },
+    {
+      "name": "L2 MPKI (miss/KIns)",
+      "formula": "(PAPI_L2_DCM / PAPI_TOT_INS) * 1000",
+      "format": "{val:.3f}",
+      "thresholds": [
+        {"min": 10.0, "tag": "⚠ memory-bound (L2 miss > 10 MPKI)"},
+        {"min": 2.0, "tag": "→ moderato"},
+        {"min": 0.0, "tag": "✓ basso"}
+      ]
+    },
+    {
+      "name": "Branch Miss Rate (%)",
+      "formula": "(PAPI_BR_MSP / PAPI_BR_INS) * 100",
+      "format": "{val:.2f}%",
+      "thresholds": [
+        {"min": 5.0, "tag": "⚠ branch-bound (> 5%)"},
+        {"min": 1.0, "tag": "→ accettabile"},
+        {"min": 0.0, "tag": "✓ basso"}
+      ]
+    }
+  ]
+}
